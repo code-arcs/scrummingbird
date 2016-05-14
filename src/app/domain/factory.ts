@@ -9,6 +9,13 @@ export default class Factory {
   }
 
   public translate(type:any, data:any = {}) {
+
+    console.log(type, data);
+    if (this.isArray(data) && data.length === 0) {
+
+      return null;
+    }
+
     switch (type.toLowerCase()) {
       case 'user':
         return (this.isArray(data)) ? data.map(data => this.transformUser(data)) : this.transformUser(data);
@@ -58,13 +65,27 @@ export default class Factory {
 
     return repo;
   }
-  private transformMilestone(r) {
-    return new Milestone()
+
+  private transformMilestone(data:any) {
+    const mile = new Milestone();
+
+    mile.id = data.id || '';
+    mile.number = data.id || '';
+    mile.state = data.state || '';
+    mile.title = data.title || '';
+    mile.description = data.description || '';
+    mile.openIssues = data.openIssues || '';
+    mile.closedIssues = data.closedIssues || '';
+
+    return mile;
+
   }
+
   private transformLabel(r) {
     return new Label()
   }
+
   private transformIssue(r) {
-    return  new Issue()
+    return new Issue()
   }
 }

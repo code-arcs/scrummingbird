@@ -1,5 +1,5 @@
 <div class="page-header">
   <h1>{{repository.name}} <small>{{repository.description}}</small> <span class="badge">{{repository.open_issues}}</span> </h1>
 </div>
-
+<app-milestone-list repoName="{{repoName}}"></app-milestone-list>
 {{repository | json}}

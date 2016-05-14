@@ -5,6 +5,7 @@ export default class Milestone {
   public description;
   public openIssues;
   public closedIssues;
+  public state;
 
   constructor() {};
 
