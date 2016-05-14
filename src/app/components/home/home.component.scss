@@ -3,6 +3,7 @@ header {
   position: relative;
   text-align: center;
 }
+
 header.special::before, header.special::after {
   border-bottom: solid 1.5px #000;
   border-top: solid 1.5px #000;
@@ -20,4 +21,14 @@ header.special::before {
 
 header.special::after {
   right: 0;
+}
+
+header .fa {
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.row {
+  margin-top: 30px;
+  font-size: 1.2em;
 }
