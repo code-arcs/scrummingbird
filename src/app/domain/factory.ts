@@ -15,7 +15,7 @@ export default class Factory {
 
       case 'repository':
         return (this.isArray(data)) ? data.map(data => this.transformRepository(data)) : this.transformRepository(data);
-      
+
       case 'milestone':
         return (this.isArray(data)) ? data.map(data => this.transformMilestone(data)) : this.transformMilestone(data);
 
@@ -34,7 +34,7 @@ export default class Factory {
     return data.constructor === Array;
   }
 
-  private transformUser(data:any) {
+  private transformUser(data:any = {github: {}}) {
     const user = new User();
     user.id = data.github.id || '';
     user.email = data.github.email || '';
@@ -46,8 +46,15 @@ export default class Factory {
     return user;
   }
 
-  private transformRepository(r) {
-    return new Repository()
+  private transformRepository(data:any) {
+    const repo = new Repository();
+    repo.id = data.id;
+    repo.name = data.name;
+    repo.ownerId = data.owner.id;
+    repo.url = data.url;
+    repo.fullName = data.full_name;
+
+    return repo;
   }
   private transformMilestone(r) {
     return new Milestone()

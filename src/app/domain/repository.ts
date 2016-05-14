@@ -3,6 +3,7 @@ export default class Repository {
   public name;
   public fullName;
   public url;
+  public ownerId;
 
   constructor() {}
 

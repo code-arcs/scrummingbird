@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { AuthenticationService } from './../shared/authentication.service';
 import Factory from './factory';
-import Repository from './repository';
 
 @Injectable()
 export class RepositoryService {
   private factory: Factory;
-
-  constructor(private http: Http) {
+  private apiUrl:string = "https://api.github.com";
+  constructor(private http: Http, private authenticationService:AuthenticationService) {
     this.factory = new Factory();
   }
 
-  public getRepositories(){
-      return this.http.get('https://api.github.com/users/sprengerjo/repos')
-      .map(res => this.factory.translate(Repository.toString(), res.json()));
+  public getRepositories() {
+      return this.http.get(`${this.apiUrl}/user/repos`,{
+        headers: this.authenticationService.getAuthedHeader()
+      })
+      .map(res => this.factory.translate('repository', res.json()));
   }
 
   public getRepository(id:number){
