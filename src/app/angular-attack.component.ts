@@ -6,6 +6,7 @@ import {FooterComponent} from './components/footer'
 import {RepositoryComponent} from './components/repository/repository.component'
 import {RepositoryDetailsComponent} from './components/repository-details/repository-details.component'
 import {DisclaimerComponent} from "./components/disclaimer/disclaimer.component";
+import {MilestoneCreateComponent} from "./components/milestone-create/milestone-create.component";
 
 @Component({
   moduleId: module.id,
@@ -16,6 +17,7 @@ import {DisclaimerComponent} from "./components/disclaimer/disclaimer.component"
 })
 @Routes([
   {path: '/', component: HomeComponent},
+  {path: '/milestones/:ownerName/:repoName/add', component: MilestoneCreateComponent},
   {path: '/repositories/:ownerName/:repoName', component: RepositoryDetailsComponent},
   {path: '/repositories', component: RepositoryComponent},
   {path: '/disclaimer', component: DisclaimerComponent},

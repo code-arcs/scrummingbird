@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1>{{repository.name}} <small>{{repository.description}}</small> <span class="badge">{{repository.open_issues}}</span> </h1>
+</div>
+
+<h1>
+  add Sprint
+</h1>
+<form>
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="milestone.title" class="form-control" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea [(ngModel)]="milestone.description" class="form-control" rows="3" placeholder="Description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Due Date</label>
+    <input [(ngModel)]="milestone.dueDate" type="date" class="form-control" placeholder="Due Date">
+  </div>
+
+  <button (click)="create(milestone)" type="submit" class="btn btn-default">create</button>
+</form>

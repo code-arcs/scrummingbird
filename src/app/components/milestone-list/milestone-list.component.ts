@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {MilestoneService} from '../../domain/milestone.service';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {HTTP_PROVIDERS} from '@angular/http';
@@ -8,7 +9,8 @@ import {HTTP_PROVIDERS} from '@angular/http';
   selector: 'app-milestone-list',
   templateUrl: 'milestone-list.component.html',
   styleUrls: ['milestone-list.component.css'],
-  providers: [MilestoneService, AuthenticationService, HTTP_PROVIDERS]
+  providers: [MilestoneService, AuthenticationService, HTTP_PROVIDERS],
+  directives:[ROUTER_DIRECTIVES]
 })
 export class MilestoneListComponent implements OnInit {
   @Input() repoName:string;

@@ -62,6 +62,7 @@ export default class Factory {
   }
 
   private transformMilestone(data:any) {
+    console.log("tranformMilestone", data);
     const mile = new Milestone();
 
     mile.id = data.id || '';

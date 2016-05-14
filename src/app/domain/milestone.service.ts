@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import Factory from './factory';
 import {AuthenticationService} from './../shared/authentication.service';
+import Milestone from "./milestone";
 
 @Injectable()
 export class MilestoneService {
@@ -31,12 +32,14 @@ export class MilestoneService {
       .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public create(repoName:string, obj:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}`;
-    return this.http.post(url, obj.toJson(), {
+  public create(ownerName:string, repoName:string, milestone:Milestone) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}`;
+
+    console.log("create milestone", milestone.toJson());
+    return this.http.post(url, milestone.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res => this.factory.translate('milestone', res.json()));
   }
 
   public update(repoName:string, number:any, obj:any) {
@@ -44,7 +47,7 @@ export class MilestoneService {
     return this.http.patch(url, obj.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res => this.factory.translate('milestone', res.json()));
   }
 
   public delete(repoName:string, number:any) {

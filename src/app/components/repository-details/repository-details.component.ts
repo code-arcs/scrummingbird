@@ -20,7 +20,6 @@ export class RepositoryDetailsComponent implements OnActivate {
   repository:Repository = new Repository();
   repoName:string;
   ownerName:string;
-
   routerOnActivate(curr:RouteSegment, prev?:RouteSegment, currTree?:RouteTree, prevTree?:RouteTree):void {
     this.routeSegment = curr;
   }
