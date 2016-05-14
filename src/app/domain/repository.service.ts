@@ -12,14 +12,18 @@ export class RepositoryService {
   }
 
   public getRepositories() {
-      return this.http.get(`${this.apiUrl}/user/repos`,{
+    return this.http.get(`${this.apiUrl}/user/repos`,{
         headers: this.authenticationService.getAuthedHeader()
       })
       .map(res => this.factory.translate('repository', res.json()));
   }
 
-  public getRepository(id:number){
-
+  public getRepository(repoName:string){
+    const user = this.authenticationService.getAuthedUser();
+    return this.http.get(`${this.apiUrl}/repos/${user.username}/${repoName}`,{
+          headers: this.authenticationService.getAuthedHeader()
+        })
+        .map(res => this.factory.translate('repository', res.json()));
   }
 
 }

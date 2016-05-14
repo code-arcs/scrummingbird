@@ -14,7 +14,6 @@ import {OrderByPipe} from '../../pipes/orderBy';
 })
 export class RepositoryComponent implements OnInit {
   repositories:any;
-
   constructor(private rs:RepositoryService) {
   }
 
