@@ -50,6 +50,8 @@ export default class Factory {
     const repo = new Repository();
     repo.id = data.id;
     repo.name = data.name;
+    repo.description = data.description;
+    repo.open_issues = data.open_issues;
     repo.ownerId = data.owner.id;
     repo.url = data.url;
     repo.fullName = data.full_name;

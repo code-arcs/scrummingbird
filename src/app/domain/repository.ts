@@ -4,6 +4,8 @@ export default class Repository {
   public fullName;
   public url;
   public ownerId;
+  public description;
+  public open_issues;
 
   constructor() {}
 

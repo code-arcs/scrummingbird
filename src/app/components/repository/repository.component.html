@@ -1,5 +1,21 @@
-<ul>
-  <li *ngFor="#repo of repositories | async">
-    {{repo.name}}
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-8">
+    <h2>List of your repositories</h2>
+    <div class="list-group">
+      <a href="#" class="list-group-item" *ngFor="let repo of repositories | orderBy: ['!open_issues'] | async">
+        <span class="badge">{{repo.open_issues}}</span>
+        <h4 class="list-group-item-heading">{{repo.name}}</h4>
+        <p class="list-group-item-text">
+        </p>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h2>Scrum it!</h2>
+    <p>
+      On the left hand side you see all repositories you have access to.
+      Select the repository you want to scrumify!
+      We will enhance GitHub's native issue tracking system by adding the ability to structure your issues in sprints.
+    </p>
+  </div>
+</div>

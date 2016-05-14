@@ -39,6 +39,7 @@ const barrels: string[] = [
   'app/components/header',
   'app/components/footer',
   'app/components/disclaimer',
+  'app/pipes/orderBy',
   /** @cli-barrel */
 ];
 
