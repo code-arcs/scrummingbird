@@ -1,7 +1,5 @@
 <app-header></app-header>
-
-<a [routerLink]="['/repositories']">repos</a>
-
-{{user | json}}
-
-<router-outlet></router-outlet>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
