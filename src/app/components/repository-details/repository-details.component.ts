@@ -14,7 +14,7 @@ import Repository from './../../domain/repository';
 })
 export class RepositoryDetailsComponent implements OnActivate {
   routeSegment:RouteSegment;
-  repository:Repository;
+  repository:Repository = new Repository();
 
   routerOnActivate(curr:RouteSegment, prev?:RouteSegment, currTree?:RouteTree, prevTree?:RouteTree):void {
     this.routeSegment = curr;
