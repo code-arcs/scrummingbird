@@ -1,7 +1,10 @@
 footer {
   text-align: center;
   background-color: rgba(131, 185, 52, 0.4);
-  padding: 50px 0;
+  padding: 40px 0 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   color: rgba(0, 0, 0, 0.7);
 
   a {
