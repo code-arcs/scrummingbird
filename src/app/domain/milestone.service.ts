@@ -22,10 +22,7 @@ export class MilestoneService {
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => {
-        console.log(res);
-        return this.factory.translate('milestone', res.json())
-      });
+      .map(res => this.factory.translate('milestone', res.json()));
 
   }
 
