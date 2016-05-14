@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './shared/authentication.service'
+import { HeaderComponent } from './header/header.component'
 import { RepositoryComponent } from './components/repository/repository.component'
 
 @Component({
@@ -8,7 +9,7 @@ import { RepositoryComponent } from './components/repository/repository.componen
   templateUrl: 'angular-attack.component.html',
   providers: [AuthenticationService],
   styleUrls: ['angular-attack.component.css'],
-  directives: [RepositoryComponent]
+  directives: [HeaderComponent, RepositoryComponent]
 })
 export class AngularAttackAppComponent {
   title = 'angular-attack works!';
