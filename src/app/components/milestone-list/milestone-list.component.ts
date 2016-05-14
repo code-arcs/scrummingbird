@@ -12,12 +12,13 @@ import {HTTP_PROVIDERS} from '@angular/http';
 })
 export class MilestoneListComponent implements OnInit {
   @Input() repoName:string;
+  @Input() ownerName:string;
   milestones:any;
 
   constructor(private ms:MilestoneService) {}
 
   ngOnInit() {
-    this.ms.get(this.repoName).subscribe(milestones => {this.milestones = milestones});
+    this.ms.get(this.ownerName, this.repoName).subscribe(milestones => {this.milestones = milestones});
   }
 
 }

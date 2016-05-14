@@ -14,11 +14,8 @@ export class MilestoneService {
     this.factory = new Factory();
   }
 
-  public get(repoName:string) {
-
-    const user = this.authenticationService.getAuthedUser();
-
-    const url = `${this.apiUrl}/repos/${user.username}/${repoName}/${this.type}`;
+  public get(ownerName:string, repoName:string) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}`;
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
