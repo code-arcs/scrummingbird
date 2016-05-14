@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 //import {Headers} from 'angular/http';
 import {AngularFire, FirebaseAuth, AuthProviders} from 'angularfire2';
-import {Factory} from '../domain/factory'
+import Factory from '../domain/factory'
 
 
 @Injectable()

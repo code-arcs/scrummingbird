@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Repository } from './repository';
-import { Factory } from './factory';
+import Factory from './factory';
+import Repository from './repository';
 
 @Injectable()
 export class RepositoryService {

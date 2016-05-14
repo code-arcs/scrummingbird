@@ -4,7 +4,7 @@ import Milestone from './milestone';
 import Label from './label';
 import Issue from './issue';
 
-export class Factory {
+export default class Factory {
   constructor() {
   }
 
