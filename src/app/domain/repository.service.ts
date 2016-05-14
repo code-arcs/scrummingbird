@@ -5,7 +5,7 @@ import Repository from './repository';
 
 @Injectable()
 export class RepositoryService {
-  private factory: Factory
+  private factory: Factory;
 
   constructor(private http: Http) {
     this.factory = new Factory();
