@@ -14,14 +14,17 @@ header {
 
   padding: $top $left;
 
-  h3 {
+  .escape-hatchet {
     margin: 0;
     padding: 0;
-
+    color: #fff;
+    text-decoration: none;
     text-transform: full-size-kana;
+    font-size: 2.5em;
   }
 
   h1 {
+    margin-top: 80px;
     text-align: center;
   }
 
@@ -47,5 +50,11 @@ header {
         background-color: rgba(255,255,255, 0.2);
       }
     }
+  }
+
+  .profile-image {
+    max-width: 45px;
+    max-height: 45px;
+    margin-right: 10px;
   }
 }

@@ -1,16 +1,24 @@
 <header>
-  <h3>
+  <a [routerLink]="['/']" href="#" class="escape-hatchet">
     <img src="/img/logo.png"/>
     Scrummingbird
-  </h3>
+  </a>
 
   <h1>
     Scrumify your GitHub Issues.
   </h1>
 
   <nav>
-    <a *ngIf="!user" (click)="login()" href="#">Login</a>
-    <a *ngIf="user" (click)="logout()" href="#">Logout</a>
-    <a [routerLink]="['/disclaimer']">Disclaimer</a>
+    <span *ngIf="user">
+      <img [src]="user.profileImage" class="profile-image img-circle">
+      <a (click)="logout()" href="#">Logout</a>
+      <a [routerLink]="['/repositories']" href="#">Repositories</a>
+    </span>
+
+    <span *ngIf="!user">
+      <a (click)="login()" href="#">Login</a>
+    </span>
+
+    <a [routerLink]="['/disclaimer']" href="#">Disclaimer</a>
   </nav>
 </header>
