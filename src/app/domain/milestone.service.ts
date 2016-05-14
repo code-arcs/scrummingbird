@@ -11,7 +11,6 @@ export class MilestoneService {
   private factory:Factory;
 
   constructor(private http:Http, private authenticationService:AuthenticationService) {
-    super('milestone');
   }
 
   public get(repoName:string) {
