@@ -4,6 +4,7 @@ export default class Repository {
   public fullName;
   public url;
   public ownerId;
+  public ownerName;
   public description;
   public open_issues;
 

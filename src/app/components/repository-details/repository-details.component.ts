@@ -19,6 +19,7 @@ export class RepositoryDetailsComponent implements OnActivate {
   routeSegment:RouteSegment;
   repository:Repository = new Repository();
   repoName:string;
+  ownerName:string;
 
   routerOnActivate(curr:RouteSegment, prev?:RouteSegment, currTree?:RouteTree, prevTree?:RouteTree):void {
     this.routeSegment = curr;
@@ -28,8 +29,9 @@ export class RepositoryDetailsComponent implements OnActivate {
 
   ngOnInit() {
     this.repoName = this.routeSegment.getParam('repoName');
+    this.ownerName = this.routeSegment.getParam('ownerName');
 
-    this.repositoryService.getRepository(this.repoName)
+    this.repositoryService.getRepository(this.ownerName,this.repoName)
         .subscribe((repo) => this.repository = repo);
   }
 

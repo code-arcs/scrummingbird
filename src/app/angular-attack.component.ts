@@ -16,7 +16,7 @@ import {DisclaimerComponent} from "./components/disclaimer/disclaimer.component"
 })
 @Routes([
   {path: '/', component: HomeComponent},
-  {path: '/repositories/:repoName', component: RepositoryDetailsComponent},
+  {path: '/repositories/:ownerName/:repoName', component: RepositoryDetailsComponent},
   {path: '/repositories', component: RepositoryComponent},
   {path: '/disclaimer', component: DisclaimerComponent},
 ])

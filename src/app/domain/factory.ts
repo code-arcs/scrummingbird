@@ -54,6 +54,7 @@ export default class Factory {
     repo.description = data.description;
     repo.open_issues = data.open_issues;
     repo.ownerId = data.owner.id;
+    repo.ownerName = data.owner.login;
     repo.url = data.url;
     repo.fullName = data.full_name;
 

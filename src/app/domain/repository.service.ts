@@ -18,9 +18,9 @@ export class RepositoryService {
       .map(res => this.factory.translate('repository', res.json()));
   }
 
-  public getRepository(repoName:string){
-    const user = this.authenticationService.getAuthedUser();
-    return this.http.get(`${this.apiUrl}/repos/${user.username}/${repoName}`,{
+  public getRepository(ownerName:string, repoName:string){
+    //const user = this.authenticationService.getAuthedUser();
+    return this.http.get(`${this.apiUrl}/repos/${ownerName}/${repoName}`,{
           headers: this.authenticationService.getAuthedHeader()
         })
         .map(res => this.factory.translate('repository', res.json()));
