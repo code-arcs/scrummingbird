@@ -1,5 +1,4 @@
-
-export class Milestone {
+export default class Milestone {
   public id;
   public number;
   public title;
@@ -8,4 +7,8 @@ export class Milestone {
   public closedIssues;
 
   constructor() {};
+
+  public toJson() {
+    return JSON.stringify(this);
+  }
 }

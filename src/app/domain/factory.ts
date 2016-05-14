@@ -1,8 +1,8 @@
 import User from './user';
-import {Repository} from './repository';
-import {Milestone} from './milestone';
-import {Label} from './label';
-import {Issue} from './issue';
+import Repository from './repository';
+import Milestone from './milestone';
+import Label from './label';
+import Issue from './issue';
 
 export class Factory {
   constructor() {

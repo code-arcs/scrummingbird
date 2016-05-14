@@ -1,5 +1,4 @@
-
-export class Issue {
+export default class Issue {
   public id;
   public number;
   public state;
@@ -9,4 +8,8 @@ export class Issue {
   public labels;
 
   constructor() {}
+
+  public toJson() {
+    return JSON.stringify(this);
+  }
 }
