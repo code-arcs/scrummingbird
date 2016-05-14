@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES, Routes } from '@angular/router';
 import { AuthenticationService } from './shared/authentication.service'
 import { HeaderComponent } from './header/header.component'
 import { RepositoryComponent } from './components/repository/repository.component'
@@ -9,8 +10,12 @@ import { RepositoryComponent } from './components/repository/repository.componen
   templateUrl: 'angular-attack.component.html',
   providers: [AuthenticationService],
   styleUrls: ['angular-attack.component.css'],
-  directives: [HeaderComponent, RepositoryComponent]
+  directives: [ROUTER_DIRECTIVES, RepositoryComponent, HeaderComponent]
 })
+@Routes([
+  {path: '/repositories', component: RepositoryComponent}
+])
+
 export class AngularAttackAppComponent {
   title = 'angular-attack works!';
   user: any;

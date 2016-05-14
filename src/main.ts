@@ -1,5 +1,7 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import {ROUTER_PROVIDERS} from '@angular/router';
+
 import { AngularAttackAppComponent, environment } from './app/';
 import { FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -14,5 +16,6 @@ bootstrap(AngularAttackAppComponent, [
     provider: AuthProviders.Github,
     method: AuthMethods.Popup,
     scope: ['user', 'repo']
-  })
+  }),
+  ROUTER_PROVIDERS
 ]);
