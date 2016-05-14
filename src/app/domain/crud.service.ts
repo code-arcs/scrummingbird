@@ -9,36 +9,36 @@ export default class CrudService {
   private factory: Factory;
   private http: Http;
 
-  constructor() {}
+  constructor(private type:string) {}
 
-  public get(type: String, repoName:string){
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${type}`;
+  public get( repoName:string){
+    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}`;
     return this.http.get(url)
-      .map(res => this.factory.translate(type, res.json()));
+      .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public getOne(type:string, repoName:string, number:any){
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${type}/${number}`;
+  public getOne( repoName:string, number:any){
+    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
     return this.http.get(url)
-      .map(res => this.factory.translate(type, res.json()));
+      .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public create(type:string, repoName:string, obj:any){
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${type}`;
+  public create( repoName:string, obj:any){
+    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}`;
     return this.http.post(url, obj.toJson())
-      .map(res => this.factory.translate(type, res.json()));
+      .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public update(type:string, repoName:string, number:any, obj:any){
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${type}/${number}`;
+  public update( repoName:string, number:any, obj:any){
+    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
     return this.http.patch(url,  obj.toJson())
-      .map(res => this.factory.translate(type, res.json()));
+      .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public delete(type:string, repoName:string, number:any){
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${type}/${number}`;
+  public delete( repoName:string, number:any){
+    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
     return this.http.delete(url)
-      .map(res => this.factory.translate(type, res.json()));
+      .map(res => this.factory.translate(this.type, res.json()));
   }
 
 }

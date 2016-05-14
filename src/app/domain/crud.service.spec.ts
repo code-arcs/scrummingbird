@@ -5,7 +5,7 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { CrudService } from './crud.service';
+import  CrudService  from './crud.service';
 
 describe('Crud Service', () => {
   beforeEachProviders(() => [CrudService]);
