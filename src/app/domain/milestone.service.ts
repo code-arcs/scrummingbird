@@ -8,7 +8,7 @@ export class MilestoneService {
   private owner:String;
   private type:string = 'milestones';
   private apiUrl:String = "https://api.github.com";
-  private factory: Factory;
+  private factory:Factory;
 
   constructor(private http:Http, private authenticationService:AuthenticationService) {
     this.factory = new Factory();

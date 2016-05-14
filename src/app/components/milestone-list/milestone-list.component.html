@@ -1,6 +1,6 @@
 <h2>Sprints</h2> <span class="badge"></span>
 <div class="list-group">
-  <a  href="#" class="list-group-item" *ngFor="#mile of milestones">
+  <a  href="#" class="list-group-item" *ngFor="let mile of milestones">
     <span class="badge">{{mile.openIssues}}</span>
     <h4 class="list-group-item-heading">{{mile.title}}</h4>
     <p class="list-group-item-text">
@@ -14,4 +14,3 @@
     </div>
   </div>
 </div>
-{{milestones | json}}

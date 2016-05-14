@@ -65,7 +65,7 @@ export default class Factory {
     const mile = new Milestone();
 
     mile.id = data.id || '';
-    mile.number = data.id || '';
+    mile.number = data.number || '';
     mile.state = data.state || '';
     mile.title = data.title || '';
     mile.description = data.description || '';
@@ -78,20 +78,20 @@ export default class Factory {
 
   private transformLabel(data:any) {
 
-
     return new Label()
   }
 
   private transformIssue(data:any) {
     const issue = new Issue();
+
     issue.id = data.id || '';
     issue.number = data.number || '';
     issue.state = data.state || '';
     issue.title = data.title || '';
     issue.body = data.body || '';
-    issue.milestone = data.milestone.number || '';
+   // issue.milestone = data.milestone.number || '';
     issue.labels = data.labels || [];
 
-    return new Issue()
+    return issue;
   }
 }

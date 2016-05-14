@@ -10,7 +10,7 @@ export class IssueService {
   private apiUrl:String = "https://api.github.com";
   private factory:Factory;
 
-  constructor(private http: Http, private authenticationService:AuthenticationService) {
+  constructor(private http:Http, private authenticationService:AuthenticationService) {
     this.factory = new Factory();
   }
 
@@ -22,7 +22,7 @@ export class IssueService {
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res =>  this.factory.translate(this.type, res.json()));
+      .map(res =>this.factory.translate(this.type, res.json()));
   }
 
   public getOne(repoName:string, number:any) {
