@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './shared/authentication.service'
+import { RepositoryComponent } from './components/repository/repository.component'
 
 @Component({
   moduleId: module.id,
   selector: 'angular-attack-app',
   templateUrl: 'angular-attack.component.html',
   providers: [AuthenticationService],
-  styleUrls: ['angular-attack.component.css']
+  styleUrls: ['angular-attack.component.css'],
+  directives: [RepositoryComponent]
 })
 export class AngularAttackAppComponent {
   title = 'angular-attack works!';

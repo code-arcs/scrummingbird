@@ -14,9 +14,5 @@ describe('Repository Service', () => {
     inject([RepositoryService], (service:RepositoryService) => {
       expect(service).toBeTruthy();
     }));
-
-  it('should ...',
-    inject([RepositoryService], (service:RepositoryService) => {
-      expect(service.abc()).toBeTruthy(42);
-    }));
+  
 });
