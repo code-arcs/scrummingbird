@@ -1,3 +1,6 @@
+$top: 10px;
+$left: 10px;
+
 header {
   background-image: url('/img/header.jpg');
   background-size: cover;
@@ -9,25 +12,40 @@ header {
   font-family: 'Raleway', sans-serif;
   color: #fff;
 
-  padding: 10px;
+  padding: $top $left;
 
-  h1 {
+  h3 {
     margin: 0;
     padding: 0;
 
     text-transform: full-size-kana;
   }
 
-  h2 {
+  h1 {
     text-align: center;
   }
 
   nav {
-    float: left;
-    right: 0;
+    position: absolute;
+    top: $top;
+    right: $left;
+
+    height: 90px;
+    line-height: 90px;
 
     a {
       color: #fff;
+      padding: 5px;
+      text-decoration: none;
+      border: 1px solid transparent;
+
+      transition-duration: 500ms;
+      transition-property: border, background-color;
+
+      &:hover {
+        border: 1px solid #fff;
+        background-color: rgba(255,255,255, 0.2);
+      }
     }
   }
 }
