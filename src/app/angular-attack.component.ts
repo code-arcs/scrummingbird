@@ -24,14 +24,4 @@ export class AngularAttackAppComponent {
       .getAuth()
       .subscribe((auth) => this.user = auth);
   }
-
-  public login() {
-    this.authenticationService
-        .login();
-  }
-
-  public logout() {
-    this.authenticationService
-        .logout();
-  }
 }
