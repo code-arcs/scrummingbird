@@ -4,7 +4,7 @@ export default class Issue {
   public state;
   public title;
   public body;
-  public milestoneId;
+  public milestone;
   public labels;
 
   constructor() {}

@@ -5,6 +5,7 @@ import { RepositoryService } from './../../domain/repository.service';
 import { AuthenticationService } from './../../shared/authentication.service';
 import Repository from './../../domain/repository';
 import {MilestoneListComponent} from "../milestone-list/milestone-list.component";
+import {IssueListComponent} from "../issue-list/issue-list.component";
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ import {MilestoneListComponent} from "../milestone-list/milestone-list.component
   templateUrl: 'repository-details.component.html',
   styleUrls: ['repository-details.component.css'],
   providers: [RepositoryService, HTTP_PROVIDERS, AuthenticationService],
-  directives: [MilestoneListComponent]
+  directives: [MilestoneListComponent, IssueListComponent]
 })
 export class RepositoryDetailsComponent implements OnActivate {
   routeSegment:RouteSegment;
@@ -27,7 +28,7 @@ export class RepositoryDetailsComponent implements OnActivate {
 
   ngOnInit() {
     this.repoName = this.routeSegment.getParam('repoName');
-    
+
     this.repositoryService.getRepository(this.repoName)
         .subscribe((repo) => this.repository = repo);
   }

@@ -75,11 +75,22 @@ export default class Factory {
 
   }
 
-  private transformLabel(r) {
+  private transformLabel(data:any) {
+
+
     return new Label()
   }
 
-  private transformIssue(r) {
+  private transformIssue(data:any) {
+    const issue = new Issue();
+    issue.id = data.id || '';
+    issue.number = data.number || '';
+    issue.state = data.state || '';
+    issue.title = data.title || '';
+    issue.body = data.body || '';
+    issue.milestone = data.milestone.number || '';
+    issue.labels = data.labels || [];
+
     return new Issue()
   }
 }

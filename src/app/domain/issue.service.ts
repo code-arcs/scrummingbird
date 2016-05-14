@@ -9,15 +9,20 @@ export class IssueService {
   private type:string = 'issue';
   private apiUrl:String = "https://api.github.com";
   private factory:Factory;
-  
-  constructor(private http: Http, private authenticationService:AuthenticationService) {}
+
+  constructor(private http: Http, private authenticationService:AuthenticationService) {
+    this.factory = new Factory();
+  }
 
   public get(repoName:string) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}`;
+
+    const user = this.authenticationService.getAuthedUser();
+    const url = `${this.apiUrl}/repos/${user.username}/${repoName}/issues`;
+
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res =>  this.factory.translate(this.type, res.json()));
   }
 
   public getOne(repoName:string, number:any) {
