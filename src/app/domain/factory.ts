@@ -15,22 +15,15 @@ export default class Factory {
 
       case 'repository':
         return (this.isArray(data)) ? data.map(data => this.transformRepository(data)) : this.transformRepository(data);
-
-      // TODO: go on
+      
       case 'milestone':
-        return data.map(r => {
-          return new Milestone();
-        });
+        return (this.isArray(data)) ? data.map(data => this.transformMilestone(data)) : this.transformMilestone(data);
 
       case 'label':
-        return data.map(r => {
-          return new Label();
-        });
+        return (this.isArray(data)) ? data.map(data => this.transformLabel(data)) : this.transformLabel(data);
 
       case 'issue':
-        return data.map(r => {
-          return new Issue()
-        });
+        return (this.isArray(data)) ? data.map(data => this.transformIssue(data)) : this.transformIssue(data);
 
       default:
         return null;
@@ -55,5 +48,14 @@ export default class Factory {
 
   private transformRepository(r) {
     return new Repository()
+  }
+  private transformMilestone(r) {
+    return new Milestone()
+  }
+  private transformLabel(r) {
+    return new Label()
+  }
+  private transformIssue(r) {
+    return  new Issue()
   }
 }
