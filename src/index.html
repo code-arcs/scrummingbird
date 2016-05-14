@@ -11,23 +11,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Service worker support is disabled by default.
-       Install the worker script and uncomment to enable.
-       Only enable service workers in production.
-  <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').catch(function(err) {
-        console.log('Error installing service worker: ', err);
-      });
-    }
-  </script>
-  -->
 </head>
 <body>
   <angular-attack-app>
-    <img src="/img/logo.png"/>
-    <h1>Amazing things come to those who wait...</h1>
+    <div class="landing-indicator">
+      <img src="/img/logo-big.png"/>
+      <h1>Amazing things come to those who wait...</h1>
+    </div>
   </angular-attack-app>
 
   <script src="vendor/es6-shim/es6-shim.js"></script>
