@@ -1,7 +1,10 @@
+export default class User {
+  public name;
+  public username;
+  public id;
+  public email;
+  public profileImage;
+  public accessToken;
 
-export class User {
-  constructor(public id, public name, public company, public email) {
-
-  }
-
+  constructor() {}
 }

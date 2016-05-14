@@ -1,0 +1,16 @@
+<header>
+  <h3>
+    <img src="/img/logo.png"/>
+    Scrummingbird
+  </h3>
+
+  <h1>
+    Scrumify your GitHub Issues.
+  </h1>
+
+  <nav>
+    <a *ngIf="!user" (click)="login()" href="#">Login</a>
+    <a *ngIf="user" (click)="logout()" href="#">Logout</a>
+    <a [routerLink]="['/disclaimer']">Disclaimer</a>
+  </nav>
+</header>
