@@ -7,7 +7,7 @@ header {
   background-position: center center;
 
   position: relative;
-  height: 170px;
+  height: 300px;
 
   font-family: 'Raleway', sans-serif;
   color: #fff;
@@ -26,7 +26,7 @@ header {
   h1 {
     position: absolute;
     text-align: center;
-    top: $topBottom;
+    bottom: $topBottom;
     width: 100%;
   }
 

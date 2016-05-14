@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteSegment, OnActivate, RouteTree} from '@angular/router';
 import {AuthenticationService} from './../../shared/authentication.service'
 import User from './../../domain/user'
 
@@ -11,7 +11,7 @@ import User from './../../domain/user'
   directives: [ROUTER_DIRECTIVES],
   styleUrls: ['header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnActivate {
   public user:User;
 
   constructor(private authenticationService:AuthenticationService) {
@@ -27,5 +27,9 @@ export class HeaderComponent {
   public logout() {
     this.authenticationService
       .logout();
+  }
+
+  routerOnActivate(curr:RouteSegment, prev?:RouteSegment, currTree?:RouteTree, prevTree?:RouteTree):void {
+    console.log(curr, prev, currTree, prevTree)
   }
 }
