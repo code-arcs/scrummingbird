@@ -5,8 +5,4 @@ export class Repository {
 
   }
 
-  public test(){
-    return 42;
-  }
-
 }

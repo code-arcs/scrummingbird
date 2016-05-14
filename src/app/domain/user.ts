@@ -1,6 +1,6 @@
 
-class User {
-  constructor(public name, public company, public id, public email) {
+export class User {
+  constructor(public id, public name, public company, public email) {
 
   }
 
