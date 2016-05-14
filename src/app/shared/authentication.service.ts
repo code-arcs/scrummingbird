@@ -11,7 +11,10 @@ export class AuthenticationService {
   constructor(private fireBaseAuth: FirebaseAuth) {
     this.fireBaseAuth
         .subscribe((_auth) => {
-            this.user = this.factory.translate('User', _auth);
+            if(_auth) {
+                return this.user = this.factory.translate('User', _auth);
+            }
+            return null;
         });
   }
 

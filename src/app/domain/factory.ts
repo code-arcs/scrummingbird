@@ -8,7 +8,7 @@ export default class Factory {
   constructor() {
   }
 
-  public translate(type:any, data:any) {
+  public translate(type:any, data:any = {}) {
     switch (type.toLowerCase()) {
       case 'user':
         return (this.isArray(data)) ? data.map(data => this.transformUser(data)) : this.transformUser(data);
