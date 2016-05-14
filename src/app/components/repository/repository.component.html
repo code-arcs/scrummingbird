@@ -2,7 +2,8 @@
   <div class="col-md-8">
     <h2>List of your repositories</h2>
     <div class="list-group">
-      <a [routerLink]="['/repositories/' + repo.ownerName + '/' + repo.name]" href="#" class="list-group-item" *ngFor="let repo of repositories | orderBy: ['!open_issues'] | async">
+      <p><input [value]="filterValue" (keyup)="onKey($event)"/></p>
+      <a [routerLink]="['/repositories/' + repo.name]" href="#" class="list-group-item" *ngFor="let repo of repositories | orderBy: ['!open_issues'] | filterBy: [filterValue] | async">
         <span class="badge">{{repo.open_issues}}</span>
         <h4 class="list-group-item-heading">{{repo.name}}</h4>
         <p class="list-group-item-text">
