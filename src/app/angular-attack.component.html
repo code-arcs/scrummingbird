@@ -1,12 +1,8 @@
-<h1>
-  {{title}}
-</h1>
-
+<app-header></app-header>
 <app-repository></app-repository>
+
 <h1 (click)="login()">
   login
 </h1>
-<h1 (click)="logout()">
-  logout
-</h1>
+
 {{user | json}}

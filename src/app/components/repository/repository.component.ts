@@ -15,7 +15,7 @@ export class RepositoryComponent implements OnInit {
 
   ngOnInit() {
     console.log("sdgsg");
-    this.rs.getRepositories().subscribe(res => {console.log(res)});
+    this.rs.getRepositories().subscribe(res => {console.log(res )});
   }
 
 }
