@@ -1,9 +1,19 @@
-<p>
-  milestone-list works!
+<h2>Sprints</h2> <span class="badge"></span>
+<div class="list-group">
+  <a  href="#" class="list-group-item" *ngFor="#mile of milestones">
+    <span class="badge">{{mile.openIssues}}</span>
+    <h4 class="list-group-item-heading">{{mile.title}}</h4>
+    <p class="list-group-item-text">
+      {{mile.description}}
+    </p>
+  </a>
 
-
-</p>
-
-<div *ngFor="#mile of milestones">
-  {{mile.title}}
+  <a  href="#" class="list-group-item" >
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default">Left</button>
+      <button type="button" class="btn btn-default">Middle</button>
+      <button type="button" class="btn btn-default">Right</button>
+    </div>
+  </a>
 </div>
+{{milestones | json}}

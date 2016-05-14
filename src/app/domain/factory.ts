@@ -68,8 +68,8 @@ export default class Factory {
     mile.state = data.state || '';
     mile.title = data.title || '';
     mile.description = data.description || '';
-    mile.openIssues = data.openIssues || '';
-    mile.closedIssues = data.closedIssues || '';
+    mile.openIssues = data.openIssues || 0;
+    mile.closedIssues = data.closedIssues || 0;
 
     return mile;
 

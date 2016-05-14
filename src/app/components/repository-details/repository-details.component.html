@@ -1,6 +1,14 @@
 <div class="page-header">
   <h1>{{repository.name}} <small>{{repository.description}}</small> <span class="badge">{{repository.open_issues}}</span> </h1>
 </div>
-<app-milestone-list repoName="{{repoName}}"></app-milestone-list>
-<app-issue-list repoName="{{repoName}}"></app-issue-list>
-{{repository | json}}
+
+
+<div class="row">
+  <div class="col-md-6">
+    <app-milestone-list repoName="{{repoName}}"></app-milestone-list>
+  </div>
+  <div class="col-md-4">
+    <app-issue-list repoName="{{repoName}}"></app-issue-list>
+  </div>
+
+</div>
