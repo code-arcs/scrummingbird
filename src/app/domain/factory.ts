@@ -9,40 +9,51 @@ export default class Factory {
   }
 
   public translate(type:any, data:any) {
-    let domainObject;
+    switch (type.toLowerCase()) {
+      case 'user':
+        return (this.isArray(data)) ? data.map(data => this.transformUser(data)) : this.transformUser(data);
 
-    domainObject = type === User.toString() ? data.map(ghUser => {
-      const user = new User();
-      user.id = ghUser.github.id || '';
-      user.email = ghUser.github.email || '';
-      user.username = ghUser.github.username || '';
-      user.name = ghUser.github.displayName || '';
-      user.profileImage = ghUser.github.profileImageUrl || '';
-      user.accessToken = ghUser.github.accessToken || '';
+      case 'repository':
+        return (this.isArray(data)) ? data.map(data => this.transformRepository(data)) : this.transformRepository(data);
 
-      return user;
-    }):User;
+      // TODO: go on
+      case 'milestone':
+        return data.map(r => {
+          return new Milestone();
+        });
 
-    domainObject = type === Repository.toString() ? data.map(r => {
-      return new Repository()
-    }):Repository;
+      case 'label':
+        return data.map(r => {
+          return new Label();
+        });
 
+      case 'issue':
+        return data.map(r => {
+          return new Issue()
+        });
 
-    domainObject = type === Milestone.toString() ? data.map(r => {
-      return new Milestone();
-    }):Milestone;
+      default:
+        return null;
+    }
+  }
 
+  private isArray(data:any) {
+    return data.constructor === Array;
+  }
 
-    domainObject = type === Label.toString() ? data.map(r => {
-      return new Label();
-    }):Label;
+  private transformUser(data:any) {
+    const user = new User();
+    user.id = data.github.id || '';
+    user.email = data.github.email || '';
+    user.username = data.github.username || '';
+    user.name = data.github.displayName || '';
+    user.profileImage = data.github.profileImageURL || '';
+    user.accessToken = data.github.accessToken || '';
 
+    return user;
+  }
 
-    domainObject = type === Issue.toString() ? data.map(r => {
-      return new Issue()
-    }):Issue;
-
-
-    return domainObject;
+  private transformRepository(r) {
+    return new Repository()
   }
 }
