@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import Factory from './factory';
 
 @Injectable()
-export class CrudService {
+export default class CrudService {
   owner: String;
   private apiUrl: String = "https://api.github.com";
   private factory: Factory;
