@@ -13,6 +13,5 @@ fdescribe('Milestone Service', () => {
   it('should ...',
     inject([MilestoneService], (service:MilestoneService) => {
       expect(service).toBeTruthy();
-      console.log(service.get('asd'));
     }));
 });
