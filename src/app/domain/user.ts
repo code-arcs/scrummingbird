@@ -1,7 +1,8 @@
 export default class User {
-  public name;
-  public username;
   public id;
+  public name;
+  public company;
+  public username;
   public email;
   public profileImage;
   public accessToken;
