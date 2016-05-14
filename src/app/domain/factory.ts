@@ -31,7 +31,7 @@ export default class Factory {
   }
 
   private isArray(data:any) {
-    return data.constructor === Array;
+    return data && data.constructor === Array;
   }
 
   private transformUser(data:any = {github: {}}) {

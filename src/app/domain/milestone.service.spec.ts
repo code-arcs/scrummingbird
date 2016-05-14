@@ -5,13 +5,14 @@ import {
   expect,
   inject
 } from '@angular/core/testing';
-import { MilestoneService } from './milestone.service';
+import {MilestoneService} from './milestone.service';
 
-describe('Milestone Service', () => {
+fdescribe('Milestone Service', () => {
   beforeEachProviders(() => [MilestoneService]);
 
   it('should ...',
-      inject([MilestoneService], (service: MilestoneService) => {
-    expect(service).toBeTruthy();
-  }));
+    inject([MilestoneService], (service:MilestoneService) => {
+      expect(service).toBeTruthy();
+      console.log(service.get('asd'));
+    }));
 });

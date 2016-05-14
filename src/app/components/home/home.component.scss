@@ -1,0 +1,23 @@
+
+header {
+  position: relative;
+  text-align: center;
+}
+header.special::before, header.special::after {
+  border-bottom: solid 1.5px #000;
+  border-top: solid 1.5px #000;
+  content: '';
+  height: 7px;
+  opacity: 0.1;
+  position: absolute;
+  top: 1.75em;
+  width: 43%;
+}
+
+header.special::before {
+  left: 0;
+}
+
+header.special::after {
+  right: 0;
+}

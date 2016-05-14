@@ -1,22 +1,32 @@
-<header [class.jumbo]="">
+<header [class.isHome]="!isHome">
   <a [routerLink]="['/']" href="#" class="escape-hatchet">
     <img src="/img/logo.png"/>
     Scrummingbird
   </a>
 
-  <h1>
-    Scrumify your GitHub Issues.
-  </h1>
+  <div class="jumbo">
+    <h1>
+      GitHub goes Scrum
+    </h1>
+    <p>
+      Add the power of Scrum to your GitHub projects!<br>
+      It has never bee easier :)
+    </p>
+    <a [routerLink]="['/repositories']" href="#" class="btn-start btn-bordered">
+      Scrum on!
+    </a>
+  </div>
 
   <nav>
     <span *ngIf="user">
+      <a [routerLink]="['/repositories']" href="#" class="btn-bordered">Repositories</a>
+
       <img [src]="user.profileImage" class="profile-image img-circle">
-      <a (click)="logout()" href="#">Logout</a>
-      <a [routerLink]="['/repositories']" href="#">Repositories</a>
+      <a (click)="logout()" href="#" class="btn-bordered">Logout</a>
     </span>
 
     <span *ngIf="!user">
-      <a (click)="login()" href="#">Login</a>
+      <a (click)="login()" href="#" class="btn-bordered">Login</a>
     </span>
   </nav>
 </header>
