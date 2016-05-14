@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Factory } from './factory';
+import Factory from './factory';
 
 @Injectable()
 export class CrudService {
