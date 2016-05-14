@@ -23,4 +23,9 @@ export class AngularAttackAppComponent {
     this.authenticationService
         .login();
   }
+
+  public logout() {
+    this.authenticationService
+        .logout();
+  }
 }
