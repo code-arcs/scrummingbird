@@ -10,12 +10,11 @@ import { HTTP_PROVIDERS} from '@angular/http';
   providers: [RepositoryService, HTTP_PROVIDERS]
 })
 export class RepositoryComponent implements OnInit {
-
+  repositories: any;
   constructor(private rs: RepositoryService) {}
 
   ngOnInit() {
-    console.log("sdgsg");
-    this.rs.getRepositories().subscribe(res => {console.log(res )});
+    this.repositories = this.rs.getRepositories();
   }
 
 }

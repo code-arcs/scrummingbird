@@ -1,3 +1,9 @@
 <p>
 LIST OF MY REPOS
 </p>
+
+<ul>
+  <li *ngFor="#repo of repositories | async">
+    {{repo | json}}
+  </li>
+</ul>
