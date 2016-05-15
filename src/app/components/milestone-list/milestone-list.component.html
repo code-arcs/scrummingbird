@@ -4,24 +4,28 @@
 </p>
 <div class="panel panel-default panel-sprint" *ngFor="let mile of milestones">
   <div class="panel-heading">
-    <h3 class="panel-title">{{mile.title}} <span class="badge pull-right">Open: {{mile.openIssues}}</span></h3>
+    <h3 class="panel-title">
+      {{mile.title}}
+      <i class="fa fa-question-circle-o" aria-hidden="true" *ngIf="mile.title" [tooltip]="mile.description"></i>
+      <span class="badge pull-right">Open: {{mile.openIssues}}</span>
+    </h3>
   </div>
   <div class="panel-body">
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+           style="width: 60%;">
         60%
       </div>
     </div>
 
-    <p>
-      {{mile.description}}
-    </p>
-
     <div class="list-group list-issues">
       <div class="list-group-item issue issue-new">New issue <span class="label label-info">2 days</span></div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">2 days</span></div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span></div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span></div>
+      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">2 days</span>
+      </div>
+      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span>
+      </div>
+      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span>
+      </div>
       <div class="list-group-item issue issue-done">Issue Done <span class="label label-info">8 days</span></div>
     </div>
 
