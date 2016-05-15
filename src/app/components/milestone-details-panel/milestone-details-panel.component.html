@@ -5,7 +5,9 @@
     </h3>
   </div>
   <div class="panel-body">
+    <h3>{{milestone.due_on}}</h3>
+    <span>open:{{milestone.openIssues}}; close: {{milestone.closedIssues}}</span>
+    <hr>
     {{milestone.description}}
-    {{milestone | json}}
   </div>
 </div>

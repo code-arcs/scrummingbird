@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    {{issue.state}}
-    {{issue.description}}
-    {{issue | json}}
+    <img [src]="issue.assigneeUrl" style="max-height: 64px"><span class="pull-right"><h2>State: {{issue.state}}</h2></span>
+    <p>{{issue.body}}</p>
+    <span></span>
   </div>
 </div>
