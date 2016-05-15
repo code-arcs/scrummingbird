@@ -8,6 +8,7 @@ export default class Issue {
   public labels;
   public repository;
   public commentCount;
+  public assignee;
 
   constructor() {}
 

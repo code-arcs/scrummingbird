@@ -106,6 +106,7 @@ export default class Factory {
     issue.state = data.state || '';
     issue.title = data.title || '';
     issue.body = data.body || '';
+    issue.assignee = data.assignee ? data.assignee.login : '';
 
     issue.labels = data.labels ? this.translate('label', data.labels) : [];
     issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : null;
