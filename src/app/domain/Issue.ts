@@ -6,6 +6,7 @@ export default class Issue {
   public body;
   public milestone;
   public labels;
+  public repository;
 
   constructor() {}
 

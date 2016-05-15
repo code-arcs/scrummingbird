@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {AuthenticationService} from '../../shared/authentication.service';
 import { IssueService } from '../../domain/issue.service';
+import Issue from '../../domain/issue';
 
 @Component({
   moduleId: module.id,
@@ -11,12 +12,28 @@ import { IssueService } from '../../domain/issue.service';
   providers: [IssueService, HTTP_PROVIDERS, AuthenticationService]
 })
 export class MyTasksComponent implements OnInit {
-  myIssues: any
-  selectedIssue: any
+  myIssues: Array<Issue>
+  selectedIssue: Issue
   constructor(private issueService: IssueService) {}
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.issueService.getIssues().subscribe(res => this.myIssues = res);
+  }
+
+  close(issue:Issue) {
+    this.issueService.close(issue.repository.ownerName, issue.repository.name, issue.number)
+      .subscribe(res => {
+        this.selectedIssue = null;
+        this.load();
+      });
+  }
+
+  selectIssue(issue:Issue) {
+    this.selectedIssue = issue;
   }
 
 }

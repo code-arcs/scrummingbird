@@ -22,6 +22,15 @@ export class IssueService {
       .map(res =>this.factory.translate(this.type, res.json()));
   }
 
+  public close(ownerName:string, repoName:string, number:any) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues/${number}`;
+    const params = {state: 'close'};
+    return this.http.patch(url, JSON.stringify(params), {
+      headers: this.authenticationService.getAuthedHeader()
+    })
+      .map(res =>this.factory.translate(this.type, res.json()));
+  }
+
   public get(ownerName:string, repoName:string) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues`;
 
