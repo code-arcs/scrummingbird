@@ -7,6 +7,7 @@ import {TOOLTIP_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootst
 import {AuthenticationService} from '../../shared/authentication.service';
 import {MilestoneService} from "../../domain/milestone.service";
 import {IssueService} from "../../domain/issue.service";
+import {RepositoryService} from "../../domain/repository.service";
 
 @Component({
   moduleId: module.id,
@@ -26,13 +27,15 @@ export class MilestoneListComponent implements OnInit {
   milestones:any;
   backlogIssues:any;
   milestonesIssue:any = {};
+  users:any;
 
 
   public selected:any = {};
+  public selectedUser:any = {};
   public typeaheadLoading:boolean = false;
   public typeaheadNoResults:boolean = false;
 
-  constructor(private is:IssueService, private ms:MilestoneService) {
+  constructor(private is:IssueService, private ms:MilestoneService, private rs:RepositoryService) {
   }
 
   ngOnInit() {
@@ -55,6 +58,13 @@ export class MilestoneListComponent implements OnInit {
 
             this.backlogIssues = this.issues.filter(i => !i.milestone);
           });
+
+
+          this.rs.getCollaborators(this.ownerName, this.repoName)
+            .subscribe(user => {
+              console.log("user", user);
+              this.users = user;
+            })
       });
   }
 
@@ -75,8 +85,15 @@ export class MilestoneListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
-
+  }
+  public typeaheadOnSelectUser(e:any, number:number):void {
+    console.log(JSON.stringify(e));
+    this.is.update(this.ownerName, this.repoName, number, {assignee	: e.item.name})
+      .subscribe(() => {
+        this.ngOnInit();
+      });
 
   }
+
 
 }

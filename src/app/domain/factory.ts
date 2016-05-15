@@ -41,12 +41,20 @@ export default class Factory {
 
   private transformUser(data:any = {github: {}}) {
     const user = new User();
-    user.id = data.github.id || '';
-    user.email = data.github.email || '';
-    user.username = data.github.username || '';
-    user.name = data.github.displayName || '';
-    user.profileImage = data.github.profileImageURL || '';
-    user.accessToken = data.github.accessToken || '';
+    console.log("USERSS", data);
+    if (!data.github) {
+      user.id = data.id || '';
+      user.name = data.login || '';
+    } else {
+      user.id = data.github.id || '';
+      user.email = data.github.email || '';
+      user.username = data.github.username || '';
+      user.name = data.github.displayName || '';
+      user.profileImage = data.github.profileImageURL || '';
+      user.accessToken = data.github.accessToken || '';
+
+    }
+
 
     return user;
   }

@@ -3,6 +3,7 @@
   <a [routerLink]="['/milestones/' + ownerName + '/' + repoName + '/add']" class="btn btn-default">Create Sprint</a>
 </p>
 
+{{users | json}}
 <div class="panel panel-default panel-sprint">
   <div class="panel-heading">
     <a class="btn btn-default btn-xs pull-right"
@@ -47,6 +48,16 @@
         {{issue.title}}
         <span *ngIf="issue.assignee" [tooltip]="issue.assignee" class="fa fa-user"></span>
         <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
+
+        <div class="form-group pull-right">
+          <input [(ngModel)]="selectedUser[issue.number]"
+                 [typeahead]="users"
+                 (typeaheadOnSelect)="typeaheadOnSelectUser($event, issue.number)"
+                 [typeaheadOptionField]="'name'"
+                 placeholder="Assign User"
+                 class="form-control input-sm">
+        </div>
+
       </div>
     </div>
 
