@@ -5,18 +5,22 @@ import { IssueService } from '../../domain/issue.service';
 import Issue from '../../domain/issue';
 import {FilterByPipe} from '../../pipes/filterBy';
 
+import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
+
 @Component({
   moduleId: module.id,
   selector: 'app-my-tasks',
   templateUrl: 'my-tasks.component.html',
   styleUrls: ['my-tasks.component.css'],
   providers: [IssueService, HTTP_PROVIDERS, AuthenticationService],
-  pipes: [FilterByPipe]
+  pipes: [FilterByPipe],
+  directives: [ACCORDION_DIRECTIVES]
 })
 export class MyTasksComponent implements OnInit {
   myIssues: any;
   selectedIssue: Issue;
   filterValue:string;
+
   constructor(private issueService: IssueService) {
     this.filterValue = '';
   }
@@ -53,5 +57,8 @@ export class MyTasksComponent implements OnInit {
     this.selectedIssue = issue;
   }
 
+  loadComments(issue:Issue) {
+      console.log("loadComments");
+  }
 
 }

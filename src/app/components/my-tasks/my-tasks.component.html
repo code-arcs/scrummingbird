@@ -39,6 +39,15 @@
       </div>
       <div class="panel-body">
         {{selectedIssue.body}}
+
+        <accordion>
+          <accordion-group heading="Comments" (click)="loadComments(issue)"[isOpen]="test">
+            This content is straight in the template.
+          </accordion-group>
+        </accordion>
+
+
+
       </div>
     </div>
   </div>
