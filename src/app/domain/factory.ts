@@ -21,7 +21,7 @@ export default class Factory {
       case 'milestone':
         return (this.isArray(data)) ? data.map(data => this.transformMilestone(data)) : this.transformMilestone(data);
 
-      case 'label':
+      case 'labels':
         return (this.isArray(data)) ? data.map(data => this.transformLabel(data)) : this.transformLabel(data);
 
       case 'issue':
