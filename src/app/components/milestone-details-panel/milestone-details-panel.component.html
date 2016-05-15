@@ -1,0 +1,11 @@
+<div class="panel panel-default" *ngIf="milestone">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Milestone: {{milestone.title}}
+    </h3>
+  </div>
+  <div class="panel-body">
+    {{milestone.description}}
+    {{milestone | json}}
+  </div>
+</div>
