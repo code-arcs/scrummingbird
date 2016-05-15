@@ -10,7 +10,8 @@
       </div>
       <div class="panel-body">
         <div class="list-group list-issues">
-          <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues" (click)="selectIssue(issue)">{{issue.title}} - {{issue.state}}
+          <div class="list-group-item issue issue-new"
+            *ngFor="let issue of myIssues" (click)="selectIssue(issue)" [ngClass]="issue.state">{{issue.title}} - {{issue.repository.name}}
             <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
           </div>
         </div>
