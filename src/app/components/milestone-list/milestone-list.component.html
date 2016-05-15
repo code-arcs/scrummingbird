@@ -5,23 +5,27 @@
 
 <div class="panel panel-default panel-sprint">
   <div class="panel-heading">
-    <a class="btn btn-default btn-xs pull-right" [routerLink]="['/repositories/' + ownerName + '/' + repoName + '/issues/add']"><i class="fa fa-plus"></i></a>
+    <a class="btn btn-default btn-xs pull-right"
+       [routerLink]="['/repositories/' + ownerName + '/' + repoName + '/issues/add']"><i class="fa fa-plus"></i></a>
     <h3 class="panel-title">Backlog</h3>
   </div>
   <div class="panel-body">
 
     <div class="list-group list-issues">
-      <div class="list-group-item issue issue-new" aria-hidden="true" *ngFor="let issue of backlogIssues" (click)="showDetails(issue)">
+      <div class="list-group-item issue issue-new" aria-hidden="true" *ngFor="let issue of backlogIssues"
+           (click)="showDetails(issue)">
         {{issue.title}}
         <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
         <span *ngIf="issue.assignee" class="fa fa-user">{{issue.assignee}}</span>
 
-        <input [(ngModel)]="selected[issue.number]"
-               [typeahead]="milestones"
-               (typeaheadOnSelect)="typeaheadOnSelect($event, issue.number)"
-               [typeaheadOptionField]="'title'"
-               class="form-control">
-
+        <div class="form-group pull-right">
+          <input [(ngModel)]="selected[issue.number]"
+                 [typeahead]="milestones"
+                 (typeaheadOnSelect)="typeaheadOnSelect($event, issue.number)"
+                 [typeaheadOptionField]="'title'"
+                 placeholder="Assign to milestone..."
+                 class="form-control input-sm">
+        </div>
       </div>
     </div>
 
@@ -38,7 +42,8 @@
   </div>
   <div class="panel-body">
     <div class="list-group list-issues">
-      <div class="list-group-item issue issue-new" *ngFor="let issue of milestonesIssue[mile.number]" (click)="showDetails(issue)">
+      <div class="list-group-item issue issue-new" *ngFor="let issue of milestonesIssue[mile.number]"
+           (click)="showDetails(issue)">
         {{issue.title}}
         <span *ngIf="issue.assignee" class="fa fa-user"></span>
         <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
