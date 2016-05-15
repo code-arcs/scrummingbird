@@ -50,12 +50,16 @@ export class MilestoneService {
       .map(res => this.factory.translate('milestone', res.json()));
   }
 
-  public delete(repoName:string, number:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
+  public delete(ownerName:string, repoName:string, number:number) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}/${number}`;
+
     return this.http.delete(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res => {
+        console.log("deleteD!!!!!  => tranform what?", res);
+        return this.factory.translate(this.type, res.json())
+      });
   }
 
 }

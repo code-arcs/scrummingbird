@@ -1,8 +1,15 @@
-<p>
-  issue-list works!
-</p>
+<h2>Issues</h2>
+<div class="list-group">
+  <a  href="#" class="list-group-item" *ngFor="let issue of issues">
+    <span class="badge">{{issue.state}}</span>
+    <h4 class="list-group-item-heading">{{issue.title}}</h4>
+    <p class="list-group-item-text">
+    </p>
+  </a>
 
-
-<div *ngFor="let issue of issues">
-  {{issue.title}}
+  <div class="list-group-item" >
+    <div class="btn-group" role="group" aria-label="...">
+      <a [routerLink]="['/issues/' + ownerName + '/' + repoName + '/add']" class="btn btn-default">add</a>
+    </div>
+  </div>
 </div>
