@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="panel panel-default panel-sprint">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+      My Tasks
+      <span class="badge pull-right">Open: XX</span>
+    </h3>
+      </div>
+      <div class="panel-body">
+        <div class="list-group list-issues">
+          <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues">{{issue.title}}
+            <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="col-md-4">
+  <div class="panel panel-default panel-sprint">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+    My Tasks
+    <span class="badge pull-right">Open: XX</span>
+  </h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-group list-issues">
+        <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues">{{issue.title}}
+          <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

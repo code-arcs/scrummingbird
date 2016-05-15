@@ -7,6 +7,7 @@ import {RepositoryComponent} from './components/repository/repository.component'
 import {RepositoryDetailsComponent} from './components/repository-details/repository-details.component'
 import {DisclaimerComponent} from "./components/disclaimer/disclaimer.component";
 import {MilestoneCreateComponent} from "./components/milestone-create/milestone-create.component";
+import {MyTasksComponent} from "./components/my-tasks/my-tasks.component";
 
 @Component({
   moduleId: module.id,
@@ -17,10 +18,11 @@ import {MilestoneCreateComponent} from "./components/milestone-create/milestone-
 })
 @Routes([
   {path: '/', component: HomeComponent},
+  {path: '/mytasks', component: MyTasksComponent},
   {path: '/milestones/:ownerName/:repoName/add', component: MilestoneCreateComponent},
   {path: '/repositories/:ownerName/:repoName', component: RepositoryDetailsComponent},
   {path: '/repositories', component: RepositoryComponent},
-  {path: '/disclaimer', component: DisclaimerComponent},
+  {path: '/disclaimer', component: DisclaimerComponent}
 ])
 
 export class AngularAttackAppComponent {

@@ -56,6 +56,7 @@ const barrels: string[] = [
   'app/components/milestone-list',
   'app/components/issue-list',
   'app/components/milestone-create',
+  'app/components/my-tasks',
   /** @cli-barrel */
 ];
 

@@ -1,0 +1,31 @@
+.list-issues {
+  margin-bottom: 0;
+
+  .label {
+    float: right;
+  }
+}
+
+.list-group-item {
+  position: relative;
+  overflow: hidden;
+}
+.list-group-item.issue::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  content: '';
+  height: 100%;
+  border-width: 2px;
+  border-style: solid;
+}
+.list-group-item.issue.issue-new::before {
+  border-color: rgba(255, 0, 0, 0.6);
+}
+.list-group-item.issue.issue-assigned::before {
+  border-color: rgba(255, 255, 0, 0.6);
+}
+.list-group-item.issue.issue-done::before {
+  border-color: rgba(0, 186, 0, 0.6);
+}

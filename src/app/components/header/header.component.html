@@ -19,7 +19,9 @@
 
   <nav>
     <span *ngIf="user">
+      <a [routerLink]="['/mytasks']" href="#" class="btn-bordered">My Tasks</a>
       <a [routerLink]="['/repositories']" href="#" class="btn-bordered">Repositories</a>
+
 
       <img [src]="user.profileImage" class="profile-image img-circle">
       <a (click)="logout()" href="#" class="btn-bordered">Logout</a>

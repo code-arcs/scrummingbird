@@ -14,9 +14,17 @@ export class IssueService {
     this.factory = new Factory();
   }
 
+  public getIssues() {
+    const url = `${this.apiUrl}/issues`;
+    return this.http.get(url, {
+      headers: this.authenticationService.getAuthedHeader()
+    })
+      .map(res =>this.factory.translate(this.type, res.json()));
+  }
+
   public get(ownerName:string, repoName:string) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues`;
-    
+
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
