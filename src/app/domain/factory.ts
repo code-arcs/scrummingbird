@@ -101,12 +101,10 @@ export default class Factory {
     comment.url = data.url;
     comment.updatedAt = new Date(data.updated_at);
     comment.createdAt = new Date(data.created_at);
-    console.log(data.update_at)
     return comment;
   }
 
   private transformIssue(data:any) {
-    console.log(data.assignee ? data.assignee.avatar_url : '');
     const issue = new Issue();
     issue.id = data.id || '';
     issue.number = data.number || '';

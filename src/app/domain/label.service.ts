@@ -25,7 +25,6 @@ export class LabelService{
 
   public create(ownerName:string, repoName:string, obj:Label) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}`;
-    console.log(url);
     return this.http.post(url, obj.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })

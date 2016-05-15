@@ -33,7 +33,6 @@ export class IssueCreateComponent implements OnActivate {
   }
 
   public create(issue){
-    console.log("create called ", issue);
     this.issueService.create(this.ownerName, this.repoName, issue)
         .subscribe((issue) => {
           this.router.navigate([`/repositories/${this.ownerName}/${this.repoName}`]);

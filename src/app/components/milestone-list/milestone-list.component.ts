@@ -62,7 +62,6 @@ export class MilestoneListComponent implements OnInit {
 
           this.rs.getCollaborators(this.ownerName, this.repoName)
             .subscribe(user => {
-              console.log("user", user);
               this.users = user;
             })
       });
@@ -87,7 +86,6 @@ export class MilestoneListComponent implements OnInit {
       });
   }
   public typeaheadOnSelectUser(e:any, number:number):void {
-    console.log(JSON.stringify(e));
     this.is.update(this.ownerName, this.repoName, number, {assignee	: e.item.name})
       .subscribe(() => {
         this.ngOnInit();

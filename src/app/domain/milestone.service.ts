@@ -55,7 +55,6 @@ export class MilestoneService {
       headers: this.authenticationService.getAuthedHeader()
     })
       .map(res => {
-        console.log("deleteD!!!!!  => tranform what?", res);
         return this.factory.translate(this.type, res.json())
       });
   }
