@@ -5,15 +5,14 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           My Tasks
-          <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-xs btn-success" (click)="open()">open</button>
-          </div>
+
+          <input [value]="filterValue" class="pull-right input-xs" (keyup)="onKey($event)" placeholder="Search"/>
         </h3>
       </div>
       <div class="panel-body">
         <div class="list-group list-issues">
           <div class="list-group-item issue issue-new"
-               *ngFor="let issue of myIssues" (click)="selectIssue(issue)"
+               *ngFor="let issue of myIssues | filterBy: [filterValue] | async" (click)="selectIssue(issue)"
                [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
 
             <h4 class="list-group-item-heading">{{issue.title}}</h4>

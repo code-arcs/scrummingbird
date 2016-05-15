@@ -11,7 +11,7 @@ export class FilterByPipe implements PipeTransform {
   filter(array, args) {
       let [input] = args;
       return (array || []).filter(i => {
-        return input === '*' || i.name.indexOf(input) > -1;
+        return input === '*' || (i.name || i.title).toLowerCase().indexOf(input.toLowerCase()) > -1;
       });
     }
   }

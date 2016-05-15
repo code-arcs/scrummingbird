@@ -19,7 +19,7 @@ export class RepositoryComponent implements OnInit {
   repositories:any;
   filterValue:String;
   constructor(private rs:RepositoryService) {
-    this.filterValue = '*';
+    this.filterValue = '';
   }
 
   ngOnInit() {

@@ -3,29 +3,34 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {AuthenticationService} from '../../shared/authentication.service';
 import { IssueService } from '../../domain/issue.service';
 import Issue from '../../domain/issue';
+import {FilterByPipe} from '../../pipes/filterBy';
 
 @Component({
   moduleId: module.id,
   selector: 'app-my-tasks',
   templateUrl: 'my-tasks.component.html',
   styleUrls: ['my-tasks.component.css'],
-  providers: [IssueService, HTTP_PROVIDERS, AuthenticationService]
+  providers: [IssueService, HTTP_PROVIDERS, AuthenticationService],
+  pipes: [FilterByPipe]
 })
 export class MyTasksComponent implements OnInit {
-  myIssues: Array<Issue>
-  selectedIssue: Issue
-  constructor(private issueService: IssueService) { }
+  myIssues: any;
+  selectedIssue: Issue;
+  filterValue:string;
+  constructor(private issueService: IssueService) {
+    this.filterValue = '';
+  }
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.issueService.getIssues().subscribe(res => this.myIssues = res);
+    this.myIssues = this.issueService.getIssues();
   }
 
-  open() {
-
+  onKey(event:any) {
+    this.filterValue = event.target.value;
   }
 
   close(issue: Issue) {
@@ -47,5 +52,6 @@ export class MyTasksComponent implements OnInit {
   selectIssue(issue: Issue) {
     this.selectedIssue = issue;
   }
+
 
 }
