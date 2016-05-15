@@ -14,7 +14,7 @@ import Issue from '../../domain/issue';
 export class MyTasksComponent implements OnInit {
   myIssues: Array<Issue>
   selectedIssue: Issue
-  constructor(private issueService: IssueService) {}
+  constructor(private issueService: IssueService) { }
 
   ngOnInit() {
     this.load();
@@ -24,7 +24,11 @@ export class MyTasksComponent implements OnInit {
     this.issueService.getIssues().subscribe(res => this.myIssues = res);
   }
 
-  close(issue:Issue) {
+  open() {
+
+  }
+
+  close(issue: Issue) {
     this.issueService.close(issue.repository.ownerName, issue.repository.name, issue.number)
       .subscribe(res => {
         this.selectedIssue = null;
@@ -32,7 +36,7 @@ export class MyTasksComponent implements OnInit {
       });
   }
 
-  selectIssue(issue:Issue) {
+  selectIssue(issue: Issue) {
     this.selectedIssue = issue;
   }
 
