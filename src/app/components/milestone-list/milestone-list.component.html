@@ -2,6 +2,7 @@
 <p>
   <a [routerLink]="['/milestones/' + ownerName + '/' + repoName + '/add']" class="btn btn-default">add</a>
 </p>
+
 <div class="panel panel-default panel-sprint" *ngFor="let mile of milestones">
   <div class="panel-heading">
     <h3 class="panel-title">
@@ -19,14 +20,9 @@
     </div>
 
     <div class="list-group list-issues">
-      <div class="list-group-item issue issue-new">New issue <span class="label label-info">2 days</span></div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">2 days</span>
+      <div class="list-group-item issue issue-new" *ngFor="let issue of getIssuesForMilestone(mile)">{{issue.title}}
+        <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
       </div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span>
-      </div>
-      <div class="list-group-item issue issue-assigned">Assigned Issue <span class="label label-info">8 days</span>
-      </div>
-      <div class="list-group-item issue issue-done">Issue Done <span class="label label-info">8 days</span></div>
     </div>
 
   </div>

@@ -15,9 +15,8 @@ export class IssueService {
   }
 
   public get(ownerName:string, repoName:string) {
-
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues`;
-
+    
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
