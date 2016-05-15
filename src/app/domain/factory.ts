@@ -3,6 +3,7 @@ import Repository from './repository';
 import Milestone from './milestone';
 import Label from './label';
 import Issue from './issue';
+import Comment from './comment';
 
 export default class Factory {
   constructor() {
@@ -25,6 +26,9 @@ export default class Factory {
 
       case 'issue':
         return (this.isArray(data)) ? data.map(data => this.transformIssue(data)) : this.transformIssue(data);
+
+      case 'comment':
+        return (this.isArray(data)) ? data.map(data => this.transformComment(data)) : this.transformComment(data);
 
       default:
         return null;
@@ -81,6 +85,18 @@ export default class Factory {
     label.color = data.color;
     label.url = data.url;
     return label;
+  }
+
+  private transformComment(data:any) {
+    const comment = new Comment();
+    comment.id = data.id;
+    comment.user = data.user;
+    comment.body = data.body;
+    comment.url = data.url;
+    comment.updatedAt = new Date(data.updated_at);
+    comment.createdAt = new Date(data.created_at);
+    console.log(data.update_at)
+    return comment;
   }
 
   private transformIssue(data:any) {

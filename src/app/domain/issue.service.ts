@@ -28,7 +28,7 @@ export class IssueService {
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => res.json());
+      .map(res => this.factory.translate('comment', res.json()));
   }
 
   public update(ownerName: string, repoName: string, number: any, params: any) {

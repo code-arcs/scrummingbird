@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-6">
 
     <div class="panel panel-default panel-sprint">
       <div class="panel-heading">
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="panel panel-default panel-sprint" *ngIf="selectedIssue">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -43,11 +43,11 @@
               <div class="col-sm-12">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>{{comment.user.login | json}}</strong>
-                    <span class="text-muted">commented at {{comment.updated_at | json}}</span>
+                    <strong>{{comment.user.login}}</strong>
+                    <span class="text-muted">commented at {{comment.updatedAt | date }}</span>
                   </div>
                   <div class="panel-body">
-                    {{comment.body | json}}
+                    <div [innerHTML]="comment.body"></div>
                   </div>
                 </div>
               </div>
