@@ -62,11 +62,11 @@
             </div>
             <div class="col-md-8">
               <div class="form-group">
-                <input [(ngModel)]="selected[issue.number]"
-                       [typeahead]="milestones"
-                       (typeaheadOnSelect)="typeaheadOnSelect($event, issue.number)"
-                       [typeaheadOptionField]="'title'"
-                       placeholder="Assign to milestone..."
+                <input [(ngModel)]="selectedUser[issue.number]"
+                       [typeahead]="users"
+                       (typeaheadOnSelect)="typeaheadOnSelectUser($event, issue.number)"
+                       [typeaheadOptionField]="'name'"
+                       placeholder="Assign to user..."
                        class="form-control input-sm">
               </div>
             </div>

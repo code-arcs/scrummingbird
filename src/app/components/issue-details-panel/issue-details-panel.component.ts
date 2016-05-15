@@ -1,6 +1,7 @@
 import { Component, Input} from '@angular/core';
 import Issue from '../../domain/issue'
 import {CommentsComponent} from "../comments/comments.component";
+import {AuthenticationService} from "../../shared/authentication.service";
 import Label from '../../domain/label'
 import {LabelService} from '../../domain/label.service'
 import {IssueService} from '../../domain/issue.service'
@@ -11,7 +12,7 @@ import {IssueService} from '../../domain/issue.service'
   templateUrl: 'issue-details-panel.component.html',
   styleUrls: ['issue-details-panel.component.css'],
   directives: [CommentsComponent],
-  providers: [IssueService, LabelService]
+  providers: [IssueService, LabelService, AuthenticationService]
 })
 export class IssueDetailsPanelComponent  {
   @Input() issue:Issue;
@@ -19,9 +20,18 @@ export class IssueDetailsPanelComponent  {
   @Input() repoName:string;
 
   guesses:Array<Label> = [];
+  authedUser;
 
-  constructor(private ls:LabelService, private is:IssueService) {
+  constructor(private ls:LabelService, private is:IssueService, private as:AuthenticationService) {
     this.guesses = Label.createLabels();
+    this.authedUser = as.getAuthedUser();
+  }
+
+  closeIssue(issue:Issue) {
+    this.is.update(this.ownerName, this.repoName, issue.number, {state: 'closed'})
+      .subscribe(r => {
+        issue.state = r.state;
+      });
   }
 
   setGuess(issue:Issue, label:Label) {
