@@ -3,24 +3,6 @@
   <a [routerLink]="['/milestones/' + ownerName + '/' + repoName + '/add']" class="btn btn-default">Create Sprint</a>
 </p>
 
-<div class="panel panel-default panel-sprint" *ngFor="let mile of milestones">
-  <div class="panel-heading">
-    <h3 class="panel-title" (click)="showDetails(mile)">
-      {{mile.title}}
-      <i class="fa fa-question-circle-o" aria-hidden="true" *ngIf="mile.title" [tooltip]="mile.description"></i>
-      <span class="badge pull-right">Open: {{mile.openIssues}}</span>
-    </h3>
-  </div>
-  <div class="panel-body">
-    <div class="list-group list-issues">
-      <div class="list-group-item issue issue-new" *ngFor="let issue of milestonesIssue[mile.number]" (click)="showDetails(issue)">{{issue.title}}
-        <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <div class="panel panel-default panel-sprint">
   <div class="panel-heading">
     <a class="btn btn-default btn-xs pull-right" [routerLink]="['/repositories/' + ownerName + '/' + repoName + '/issues/add']"><i class="fa fa-plus"></i></a>
@@ -43,3 +25,23 @@
 
   </div>
 </div>
+
+<div class="panel panel-default panel-sprint" *ngFor="let mile of milestones">
+  <div class="panel-heading">
+    <h3 class="panel-title" (click)="showDetails(mile)">
+      {{mile.title}}
+      <i class="fa fa-question-circle-o" aria-hidden="true" *ngIf="mile.title" [tooltip]="mile.description"></i>
+      <span class="badge pull-right">Open: {{mile.openIssues}}</span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group list-issues">
+      <div class="list-group-item issue issue-new" *ngFor="let issue of milestonesIssue[mile.number]" (click)="showDetails(issue)">{{issue.title}}
+        <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
