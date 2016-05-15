@@ -90,9 +90,9 @@ export default class Factory {
     issue.state = data.state || '';
     issue.title = data.title || '';
     issue.body = data.body || '';
-    
+
     issue.labels = data.labels ? this.translate('label', data.labels) : [];
-    issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : [];
+    issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : null;
 
     return issue;
   }
