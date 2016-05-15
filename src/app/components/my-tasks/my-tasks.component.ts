@@ -29,7 +29,15 @@ export class MyTasksComponent implements OnInit {
   }
 
   close(issue: Issue) {
-    this.issueService.close(issue.repository.ownerName, issue.repository.name, issue.number)
+    this.issueService.update(issue.repository.ownerName, issue.repository.name, issue.number, {state: 'closed'})
+      .subscribe(res => {
+        this.selectedIssue = null;
+        this.load();
+      });
+  }
+
+  unassign(issue: Issue) {
+    this.issueService.update(issue.repository.ownerName, issue.repository.name, issue.number, {assignee: ''})
       .subscribe(res => {
         this.selectedIssue = null;
         this.load();

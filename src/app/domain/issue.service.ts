@@ -22,9 +22,8 @@ export class IssueService {
       .map(res =>this.factory.translate(this.type, res.json()));
   }
 
-  public close(ownerName:string, repoName:string, number:any) {
+  public update(ownerName:string, repoName:string, number:any, params:any) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues/${number}`;
-    const params = {state: 'close'};
     return this.http.patch(url, JSON.stringify(params), {
       headers: this.authenticationService.getAuthedHeader()
     })
@@ -54,14 +53,6 @@ export class IssueService {
       headers: this.authenticationService.getAuthedHeader()
     })
       .map(res => this.factory.translate('this.type', res.json()));
-  }
-
-  public update(repoName:string, number:any, obj:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
-    return this.http.patch(url, obj.toJson(), {
-      headers: this.authenticationService.getAuthedHeader()
-    })
-      .map(res => this.factory.translate(this.type, res.json()));
   }
 
   public delete(repoName:string, number:any) {
