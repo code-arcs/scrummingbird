@@ -9,7 +9,15 @@
 .list-group-item {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+
+  &.active  {
+    background-color: #f5f5f5;
+    color: black;
+    border-color: grey;
+  }
 }
+
 .list-group-item.issue::before {
   position: absolute;
   top: 0;
