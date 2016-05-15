@@ -62,36 +62,37 @@ export default class Factory {
   }
 
   private transformMilestone(data:any) {
-    console.log("tranformMilestone", data);
     const mile = new Milestone();
-
     mile.id = data.id || '';
     mile.number = data.number || '';
     mile.state = data.state || '';
     mile.title = data.title || '';
     mile.description = data.description || '';
-    mile.openIssues = data.openIssues || 0;
-    mile.closedIssues = data.closedIssues || 0;
+    mile.openIssues = data.open_issues || 0;
+    mile.closedIssues = data.closed_issues || 0;
 
     return mile;
 
   }
 
   private transformLabel(data:any) {
-
-    return new Label()
+    const label = new Label();
+    label.name = data.name;
+    label.color = data.color;
+    label.url = data.url;
+    return label;
   }
 
   private transformIssue(data:any) {
     const issue = new Issue();
-
     issue.id = data.id || '';
     issue.number = data.number || '';
     issue.state = data.state || '';
     issue.title = data.title || '';
     issue.body = data.body || '';
-   // issue.milestone = data.milestone.number || '';
-    issue.labels = data.labels || [];
+    
+    issue.labels = data.labels ? this.translate('label', data.labels) : [];
+    issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : [];
 
     return issue;
   }

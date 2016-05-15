@@ -14,12 +14,13 @@ import {HTTP_PROVIDERS} from '@angular/http';
 })
 export class IssueListComponent implements OnInit {
   @Input() repoName:string;
+  @Input() ownerName:string;
   issues:any;
 
   constructor(private is:IssueService) {}
 
   ngOnInit() {
-    this.is.get(this.repoName).subscribe(issues => {this.issues = issues});
+    this.is.get(this.ownerName, this.repoName).subscribe(issues => {this.issues = issues});
   }
 
 }

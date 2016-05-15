@@ -1,6 +1,7 @@
 <h2>Issues</h2>
 <div class="list-group">
   <a  href="#" class="list-group-item" *ngFor="let issue of issues">
+    {{issue | json}}
     <span class="badge">{{issue.state}}</span>
     <h4 class="list-group-item-heading">{{issue.title}}</h4>
     <p class="list-group-item-text">

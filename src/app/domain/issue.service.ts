@@ -14,10 +14,9 @@ export class IssueService {
     this.factory = new Factory();
   }
 
-  public get(repoName:string) {
+  public get(ownerName:string, repoName:string) {
 
-    const user = this.authenticationService.getAuthedUser();
-    const url = `${this.apiUrl}/repos/${user.username}/${repoName}/issues`;
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues`;
 
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
