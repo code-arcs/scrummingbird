@@ -114,7 +114,7 @@ export default class Factory {
     issue.assignee = data.assignee ? data.assignee.login : '';
     issue.assigneeUrl = data.assignee ? data.assignee.avatar_url : '';
 
-    issue.labels = data.labels ? this.translate('label', data.labels) : [];
+    issue.labels = data.labels ? this.translate('labels', data.labels) : [];
     issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : null;
     issue.repository = data.repository ? this.translate('repository', data.repository) : null;
     issue.commentCount = data.comments ? data.comments : 0;

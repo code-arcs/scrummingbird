@@ -7,16 +7,7 @@
   <div class="panel-body">
     <div>
       <div class="btn-group btn-group-xs" role="toolbar">
-        <a class="btn btn-default">0d</a>
-        <a class="btn btn-default">1/2d</a>
-        <a class="btn btn-default">1d</a>
-        <a class="btn btn-default">2d</a>
-        <a class="btn btn-default">3d</a>
-        <a class="btn btn-default">5d</a>
-        <a class="btn btn-default">8d</a>
-        <a class="btn btn-default">13d</a>
-        <a class="btn btn-default">20d</a>
-        <a class="btn btn-default">?</a>
+        <a class="btn btn-default" (click)="setGuess(issue, guess)" *ngFor="let guess of guesses">{{guess.name}}</a>
       </div>
     </div>
 
