@@ -10,6 +10,9 @@
 }
 
 .comments {
+  max-height: 150px;
+  overflow: scroll;
+
   .comment{
     margin: 0 0 8px 0;
     .profile {
@@ -29,3 +32,4 @@
     }
   }
 }
+

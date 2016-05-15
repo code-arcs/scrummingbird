@@ -1,16 +1,17 @@
 
 <accordion class="comments">
   <accordion-group heading="Comments to {{issue.title}}" [isOpen]="true">
-
-    <div *ngFor="let comment of issueComments | async" class="comment">
-      <div class="row row-eq-height">
-        <div class="col-md-2 center-block profile">
-          <img [src]="comment.user.avatar_url" class="img-circle" width="48px">
-        </div>
-        <div class="well col-md-10">
-          <div [innerHTML]="comment.body"></div>
-          <div class="date">
-            commented at {{comment.updatedAt | date }}
+    <div class="comments">
+      <div *ngFor="let comment of issueComments | async" class="comment">
+        <div class="row row-eq-height">
+          <div class="col-md-2 center-block profile">
+            <img [src]="comment.user.avatar_url" class="img-circle" width="48px">
+          </div>
+          <div class="well col-md-10">
+            <div [innerHTML]="comment.body"></div>
+            <div class="date">
+              commented at {{comment.updatedAt | date }}
+            </div>
           </div>
         </div>
       </div>
