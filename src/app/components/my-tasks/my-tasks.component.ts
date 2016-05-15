@@ -6,6 +6,7 @@ import Issue from '../../domain/issue';
 import {FilterByPipe} from '../../pipes/filterBy';
 
 import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
+import {CommentsComponent} from "../comments/comments.component";
 
 @Component({
   moduleId: module.id,
@@ -14,14 +15,12 @@ import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
   styleUrls: ['my-tasks.component.css'],
   providers: [IssueService, HTTP_PROVIDERS, AuthenticationService],
   pipes: [FilterByPipe],
-  directives: [ACCORDION_DIRECTIVES]
+  directives: [ACCORDION_DIRECTIVES, CommentsComponent]
 })
 export class MyTasksComponent implements OnInit {
   myIssues: any;
   selectedIssue: Issue;
-  selectedIssueComments: any;
   filterValue:string;
-  createCommentMsg:string;
 
   constructor(private issueService: IssueService) {
     this.filterValue = '';
@@ -57,21 +56,8 @@ export class MyTasksComponent implements OnInit {
 
   selectIssue(issue: Issue) {
     this.selectedIssue = issue;
-    this.loadComments(issue);
   }
 
 
-  loadComments(issue:Issue) {
-      this.selectedIssueComments =
-        this.issueService.getComments(issue.repository.ownerName, issue.repository.name, issue.number);
-  }
-
-  createComment(issue:Issue, createComment:string) {
-    this.issueService.createComments(issue.repository.ownerName, issue.repository.name, issue.number, createComment)
-      .subscribe((res) => {
-        this.loadComments(issue);
-        this.createCommentMsg="";
-      });
-  }
 
 }

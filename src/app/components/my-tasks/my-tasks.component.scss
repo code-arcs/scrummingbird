@@ -39,35 +39,3 @@
 }
 
 
-/*
- * Row with equal height columns
- * --------------------------------------------------
- */
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}
-
-.comments {
-  .comment{
-    margin: 0 0 8px 0;
-    .profile {
-      align-items: center;
-      display: flex;
-    }
-    .well {
-      padding: 10px 19px 19px 19px;
-      margin:0 16px 0 0;
-
-      .date{
-        position: absolute;
-        bottom: 0;
-        left: 19px;
-        color: #c4c4c4;
-      }
-    }
-  }
-
-}

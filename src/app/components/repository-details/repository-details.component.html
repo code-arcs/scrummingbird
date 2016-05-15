@@ -9,11 +9,11 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <app-milestone-list ownerName="{{ownerName}}" repoName="{{repoName}}" (selectedItem)="itemSelected($event)"></app-milestone-list>
   </div>
-  <div class="col-md-4">
-    <app-issue-details-panel [issue]="selectedIssue"></app-issue-details-panel>
+  <div class="col-md-5">
+    <app-issue-details-panel [ownerName]="ownerName" [repoName]="repoName" [issue]="selectedIssue"></app-issue-details-panel>
     <app-milestone-details-panel [milestone]="selectedMilestone"></app-milestone-details-panel>
   </div>
 

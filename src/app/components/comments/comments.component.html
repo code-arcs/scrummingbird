@@ -1,0 +1,26 @@
+
+<accordion class="comments">
+  <accordion-group heading="Comments" [isOpen]="test">
+
+    <div *ngFor="let comment of issueComments | async" class="comment">
+      <div class="row row-eq-height">
+        <div class="col-md-2 center-block profile">
+          <img [src]="comment.user.avatar_url" class="img-circle" width="48px">
+        </div>
+        <div class="well col-md-10">
+          <div [innerHTML]="comment.body"></div>
+          <div class="date">
+            commented at {{comment.updatedAt | date }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="col-md-10">
+      <input type="text" class="form-control" [(ngModel)]="createCommentMsg" placeholder="enter comment">
+    </div>
+    <div class="col-md-2">
+      <input class="btn btn-primary btn-sm" (click)="createComment(issue, createCommentMsg)" type="button" value="send">
+    </div>
+  </accordion-group>
+</accordion>
