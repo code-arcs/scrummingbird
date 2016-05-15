@@ -39,12 +39,12 @@ export class IssueService {
       .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public create(repoName:string, obj:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}`;
-    return this.http.post(url, obj.toJson(), {
+  public create(ownerName:string, repoName:string, issue:any) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues`;
+    return this.http.post(url, issue.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res => this.factory.translate('this.type', res.json()));
   }
 
   public update(repoName:string, number:any, obj:any) {

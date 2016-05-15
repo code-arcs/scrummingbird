@@ -34,8 +34,6 @@ export class MilestoneService {
 
   public create(ownerName:string, repoName:string, milestone:Milestone) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}`;
-
-    console.log("create milestone", milestone.toJson());
     return this.http.post(url, milestone.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })

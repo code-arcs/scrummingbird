@@ -8,12 +8,12 @@
 <form>
   <div class="form-group">
     <label>Title</label>
-    <input type="text" [(ngModel)]="milestone.title" class="form-control" placeholder="Title">
+    <input type="text" [(ngModel)]="issue.title" class="form-control" placeholder="Title">
   </div>
   <div class="form-group">
     <label>Description</label>
-    <textarea [(ngModel)]="milestone.description" class="form-control" rows="3" placeholder="Description"></textarea>
+    <textarea [(ngModel)]="issue.description" class="form-control" rows="3" placeholder="Description"></textarea>
   </div>
 
-  <button (click)="create(milestone)" type="submit" class="btn btn-default">create</button>
+  <button (click)="create(issue)" type="submit" class="btn btn-default">create</button>
 </form>
