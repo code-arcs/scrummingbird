@@ -26,4 +26,12 @@ export class RepositoryService {
         .map(res => this.factory.translate('repository', res.json()));
   }
 
+  public getCollaborators(ownerName:string, repoName:string){
+    //GET /repos/:owner/:repo/collaborators
+    return this.http.get(`${this.apiUrl}/repos/${ownerName}/${repoName}/collaborators`,{
+          headers: this.authenticationService.getAuthedHeader()
+        })
+        .map(res => this.factory.translate('user', res.json()));
+  }
+
 }
