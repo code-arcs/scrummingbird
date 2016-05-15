@@ -42,11 +42,6 @@ export class MilestoneListComponent implements OnInit {
     this.is.get(this.ownerName, this.repoName)
       .subscribe(issues => {
         this.issues = issues;
-        this.milestones = issues.map(i => i.milestone)
-          .filter((value, index, self) => {
-            return value ? self.map(m => m ? m.number : null)
-              .indexOf(value.number) === index : false
-          });
 
         this.ms.get(this.ownerName, this.repoName)
           .subscribe(milestones => {
