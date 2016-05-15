@@ -11,7 +11,8 @@
       </div>
       <div class="panel-body">
         <div class="list-group list-issues">
-          <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues | filterBy: [filterValue] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+          <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues | filterBy: [filterValue] | async"
+               (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
 
             <h4 class="list-group-item-heading">{{issue.title}}</h4>
             <div class="list-group-item-text">
@@ -34,28 +35,28 @@
         </h3>
       </div>
       <div class="panel-body">
-        {{selectedIssue.body}}
+        <div class="well">
+          {{selectedIssue.body}}
+        </div>
 
-        <accordion *ngIf="selectedIssue.commentCount > 0">
+        <accordion *ngIf="selectedIssue.commentCount > 0" class="comments">
           <accordion-group heading="Comments" (click)="loadComments(selectedIssue)" [isOpen]="test">
 
-            <div *ngFor="let comment of selectedIssueComments | async">
-              <div class="col-sm-12">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <strong>{{comment.user.login}}</strong>
-                    <span class="text-muted">commented at {{comment.updatedAt | date }}</span>
-                  </div>
-                  <div class="panel-body">
-                    <div [innerHTML]="comment.body"></div>
+            <div *ngFor="let comment of selectedIssueComments | async" class="comment">
+              <div class="row row-eq-height">
+                <div class="col-md-2 center-block profile">
+                  <img [src]="comment.user.avatar_url" width="48px">
+                </div>
+                <div class="well col-md-10">
+                  asd
+                  <div class="date">
+                    commented at {{comment.updatedAt | date }}
                   </div>
                 </div>
               </div>
             </div>
-
           </accordion-group>
         </accordion>
-
 
 
       </div>
