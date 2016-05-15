@@ -2,11 +2,11 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {HTTP_PROVIDERS} from '@angular/http';
 
-import {TOOLTIP_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {TOOLTIP_DIRECTIVES, TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
-import {IssueService} from '../../domain/issue.service';
 import {AuthenticationService} from '../../shared/authentication.service';
 import {MilestoneService} from "../../domain/milestone.service";
+import {IssueService} from "../../domain/issue.service";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +14,7 @@ import {MilestoneService} from "../../domain/milestone.service";
   templateUrl: 'milestone-list.component.html',
   styleUrls: ['milestone-list.component.css'],
   providers: [IssueService, AuthenticationService, MilestoneService, HTTP_PROVIDERS],
-  directives: [ROUTER_DIRECTIVES, TOOLTIP_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, TOOLTIP_DIRECTIVES, TYPEAHEAD_DIRECTIVES]
 })
 
 export class MilestoneListComponent implements OnInit {
@@ -26,7 +26,11 @@ export class MilestoneListComponent implements OnInit {
   milestones:any;
   backlogIssues:any;
   milestonesIssue:any = {};
-  detailItem:any;
+
+
+  public selected:any = {};
+  public typeaheadLoading:boolean = false;
+  public typeaheadNoResults:boolean = false;
 
   constructor(private is:IssueService, private ms:MilestoneService) {
   }
@@ -61,4 +65,18 @@ export class MilestoneListComponent implements OnInit {
   showDetails(item) {
     this.selectedItem.emit(item);
   }
+
+  public changeTypeaheadNoResults(e:boolean):void {
+    this.typeaheadNoResults = e;
+  }
+
+  public typeaheadOnSelect(e:any, number:number):void {
+    this.is.update(this.ownerName, this.repoName, number, {milestone: e.item.number})
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+
+
+  }
+
 }
