@@ -50,10 +50,7 @@ export class RepositoryDetailsComponent implements OnActivate {
 
     this.labelService.get(this.ownerName, this.repoName)
       .subscribe(l => {
-        let any = l.some(l => l.color.toUpperCase() === LabelColor);
-        if (!any) {
-    Label.createLabels().forEach(l => this.labelService.create(this.ownerName, this.repoName, l))
-        }
+        this.hasRequiredLabels = l.some(l => l.color.toUpperCase() === LabelColor);
       });
 
   }
@@ -65,5 +62,10 @@ export class RepositoryDetailsComponent implements OnActivate {
     } else if (selectedItem instanceof Issue) {
       this.selectedIssue = selectedItem;
     }
+  }
+
+  createRequiredLabels() {
+    Label.createLabels().forEach(l => this.labelService.create(this.ownerName, this.repoName, l).subscribe())
+    this.ngOnInit();
   }
 }

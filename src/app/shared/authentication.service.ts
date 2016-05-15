@@ -47,8 +47,7 @@ export class AuthenticationService {
     public getAuthedHeader():Headers {
         const authedHeader = new Headers();
         authedHeader.append('Authorization', `token ${this.user.accessToken}`);
-        authedHeader.append('If-Modified-Since',
-          /*FIXME: <crap but it works for now...>*/new Date(2000,5,5).toString());
+        authedHeader.append('If-Modified-Since', /*FIXME: <crap but it works for now...>*/new Date(2000,5,5).toString());
         return authedHeader;
     }
 }

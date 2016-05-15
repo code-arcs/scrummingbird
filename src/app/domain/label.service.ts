@@ -23,42 +23,12 @@ export class LabelService{
       .map(res => this.factory.translate(this.type, res.json()));
   }
 
-  public getOne(repoName:string, number:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
-    return this.http.get(url, {
-      headers: this.authenticationService.getAuthedHeader()
-    })
-      .map(res => this.factory.translate(this.type, res.json()));
-  }
-
   public create(ownerName:string, repoName:string, obj:Label) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/${this.type}`;
-    console.log(obj.toJson());
+    console.log(url);
     return this.http.post(url, obj.toJson(), {
       headers: this.authenticationService.getAuthedHeader()
     })
-      .map(res => {
-        console.log(res);
-        return this.factory.translate(this.type, res.json())
-      });
-  }
-
-  public update(repoName:string, number:any, obj:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
-    return this.http.patch(url, obj.toJson(), {
-      headers: this.authenticationService.getAuthedHeader()
-    })
-      .map(res => {
-        console.log(res);
-        return this.factory.translate(this.type, res.json())
-      });
-  }
-
-  public delete(repoName:string, number:any) {
-    const url = `${this.apiUrl}/repos/${this.owner}/${repoName}/${this.type}/${number}`;
-    return this.http.delete(url, {
-      headers: this.authenticationService.getAuthedHeader()
-    })
-      .map(res => this.factory.translate(this.type, res.json()));
+      .map(res => this.factory.translate('labels', res.json()));
   }
 }

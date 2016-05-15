@@ -2,6 +2,11 @@
   <h1>{{repository.name}} <small>{{repository.description}}</small> <span class="badge">{{repository.open_issues}}</span> </h1>
 </div>
 
+<div class="alert alert-warning" role="alert" *ngIf="!hasRequiredLabels">
+  <strong>Warning!</strong>
+  In order to work properly, we would like to create some labels in your repository which help us to track your progress.
+  <a class="btn btn-default btn-xs" (click)="createRequiredLabels()">Yes, proceed!</a>
+</div>
 
 <div class="row">
   <div class="col-md-8">

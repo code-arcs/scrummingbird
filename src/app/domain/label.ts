@@ -11,12 +11,24 @@ export default class Label {
   }
 
   public toJson() {
+    this.color = this.color.toLowerCase();
     return JSON.stringify(this);
   }
 
   public static createLabels() {
     return [
       new Label('0d'),
+      new Label('1/2d'),
+      new Label('1d'),
+      new Label('2d'),
+      new Label('3d'),
+      new Label('5d'),
+      new Label('8d'),
+      new Label('13d'),
+      new Label('20d'),
+      new Label('40d'),
+      new Label('100d'),
+      new Label('?'),
     ];
   }
 }
