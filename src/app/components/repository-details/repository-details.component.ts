@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { OnActivate, RouteSegment, RouteTree } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
+
+import {TAB_DIRECTIVES} from 'ng2-bootstrap'
+
 import { RepositoryService } from './../../domain/repository.service';
 import { AuthenticationService } from './../../shared/authentication.service';
 import Repository from './../../domain/repository';
@@ -13,7 +16,7 @@ import {IssueListComponent} from "../issue-list/issue-list.component";
   templateUrl: 'repository-details.component.html',
   styleUrls: ['repository-details.component.css'],
   providers: [RepositoryService, HTTP_PROVIDERS, AuthenticationService],
-  directives: [MilestoneListComponent, IssueListComponent]
+  directives: [MilestoneListComponent, IssueListComponent,TAB_DIRECTIVES]
 })
 export class RepositoryDetailsComponent implements OnActivate {
   routeSegment:RouteSegment;
