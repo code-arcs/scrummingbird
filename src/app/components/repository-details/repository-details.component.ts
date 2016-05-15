@@ -65,7 +65,7 @@ export class RepositoryDetailsComponent implements OnActivate {
   }
 
   createRequiredLabels() {
-    Label.createLabels().forEach(l => this.labelService.create(this.ownerName, this.repoName, l).subscribe())
+    Label.createLabels().forEach(l => this.labelService.create(this.ownerName, this.repoName, l).subscribe());
     this.ngOnInit();
   }
 }

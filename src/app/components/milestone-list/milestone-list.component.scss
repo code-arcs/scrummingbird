@@ -19,6 +19,9 @@
   border-width: 2px;
   border-style: solid;
 }
+.list-group-item.issue img {
+  width: 18px;
+}
 .list-group-item.issue.issue-new::before {
   border-color: rgba(255, 0, 0, 0.6);
 }
