@@ -31,6 +31,18 @@ export class IssueService {
       .map(res => this.factory.translate('comment', res.json()));
   }
 
+  public createComments(ownerName: string, repoName: string, number: any, comment:string) {
+    const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues/${number}/comments`;
+    const body = {
+      "body": comment
+    };
+
+    return this.http.post(url, JSON.stringify(body), {
+        headers: this.authenticationService.getAuthedHeader()
+      })
+      .map(res => this.factory.translate('comment', res.json()));
+  }
+
   public update(ownerName: string, repoName: string, number: any, params: any) {
     const url = `${this.apiUrl}/repos/${ownerName}/${repoName}/issues/${number}`;
     return this.http.patch(url, JSON.stringify(params), {
