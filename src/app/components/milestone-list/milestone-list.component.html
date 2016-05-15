@@ -45,7 +45,7 @@
     <h3 class="panel-title" (click)="showDetails(mile)">
       {{mile.title}}
       <i class="fa fa-question-circle-o" aria-hidden="true" *ngIf="mile.title" [tooltip]="mile.description"></i>
-      <span class="badge pull-right">Open: {{mile.openIssues}} / {{mile.closedIssues}}</span>
+      <span class="badge pull-right">Already Closed: {{mile.closedIssues}} / {{mile.closedIssues + mile.openIssues}}</span>
     </h3>
   </div>
   <div class="panel-body">
