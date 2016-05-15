@@ -94,7 +94,7 @@ export default class Factory {
     issue.labels = data.labels ? this.translate('label', data.labels) : [];
     issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : null;
     issue.repository = data.repository ? this.translate('repository', data.repository) : null;
-
+    issue.commentCount = data.comments ? data.comments : 0;
     return issue;
   }
 }

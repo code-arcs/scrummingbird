@@ -7,6 +7,7 @@ export default class Issue {
   public milestone;
   public labels;
   public repository;
+  public commentCount;
 
   constructor() {}
 

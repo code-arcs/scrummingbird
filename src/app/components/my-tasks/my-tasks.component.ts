@@ -19,6 +19,7 @@ import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
 export class MyTasksComponent implements OnInit {
   myIssues: any;
   selectedIssue: Issue;
+  selectedIssueComments: any;
   filterValue:string;
 
   constructor(private issueService: IssueService) {
@@ -58,7 +59,8 @@ export class MyTasksComponent implements OnInit {
   }
 
   loadComments(issue:Issue) {
-      console.log("loadComments");
+      this.selectedIssueComments =
+        this.issueService.getComments(issue.repository.ownerName, issue.repository.name, issue.number);
   }
 
 }
