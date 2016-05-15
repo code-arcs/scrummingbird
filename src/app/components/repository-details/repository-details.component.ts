@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OnActivate, RouteSegment, RouteTree } from '@angular/router';
+import { OnActivate, RouteSegment, RouteTree, Routes } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 import {TAB_DIRECTIVES} from 'ng2-bootstrap'
@@ -9,6 +9,7 @@ import { AuthenticationService } from './../../shared/authentication.service';
 import Repository from './../../domain/repository';
 import {MilestoneListComponent} from "../milestone-list/milestone-list.component";
 import {IssueListComponent} from "../issue-list/issue-list.component";
+import {DisclaimerComponent} from "../disclaimer/disclaimer.component";
 
 @Component({
   moduleId: module.id,

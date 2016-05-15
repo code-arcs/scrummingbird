@@ -8,6 +8,7 @@ import {RepositoryDetailsComponent} from './components/repository-details/reposi
 import {DisclaimerComponent} from "./components/disclaimer/disclaimer.component";
 import {MilestoneCreateComponent} from "./components/milestone-create/milestone-create.component";
 import {MyTasksComponent} from "./components/my-tasks/my-tasks.component";
+import {IssueCreateComponent} from "./components/issue-create/issue-create.component";
 
 @Component({
   moduleId: module.id,
@@ -20,6 +21,7 @@ import {MyTasksComponent} from "./components/my-tasks/my-tasks.component";
   {path: '/', component: HomeComponent},
   {path: '/mytasks', component: MyTasksComponent},
   {path: '/milestones/:ownerName/:repoName/add', component: MilestoneCreateComponent},
+  {path: '/repositories/:ownerName/:repoName/issues/add', component: IssueCreateComponent},
   {path: '/repositories/:ownerName/:repoName', component: RepositoryDetailsComponent},
   {path: '/repositories', component: RepositoryComponent},
   {path: '/disclaimer', component: DisclaimerComponent}
