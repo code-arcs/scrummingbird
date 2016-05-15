@@ -24,6 +24,6 @@
     <p>{{issue.body}}</p>
     <span></span>
   </div>
-
-  <app-comments [issue]="issue" [ownerName]="ownerName" [repoName]="repoName"></app-comments>
 </div>
+
+<app-comments *ngIf="issue" [issue]="issue" [ownerName]="ownerName" [repoName]="repoName"></app-comments>

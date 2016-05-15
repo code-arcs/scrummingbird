@@ -1,6 +1,6 @@
 
 <accordion class="comments">
-  <accordion-group heading="Comments" [isOpen]="test">
+  <accordion-group heading="Comments to {{issue.title}}" [isOpen]="true">
 
     <div *ngFor="let comment of issueComments | async" class="comment">
       <div class="row row-eq-height">
