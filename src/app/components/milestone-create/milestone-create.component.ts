@@ -33,7 +33,7 @@ export class MilestoneCreateComponent implements OnActivate {
   }
 
   public create(milestone){
-    console.log("create called ", milestone);
+    milestone.due_on = new Date(milestone.due_on);
     this.milestoneService.create(this.ownerName, this.repoName, milestone)
         .subscribe((milestone) => {
           this.router.navigate([`/repositories/${this.ownerName}/${this.repoName}`]);

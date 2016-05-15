@@ -6,7 +6,7 @@ export default class Milestone {
   public openIssues;
   public closedIssues;
   public state;
-  public dueDate;
+  public due_on;
   constructor() {};
 
   public toJson() {
