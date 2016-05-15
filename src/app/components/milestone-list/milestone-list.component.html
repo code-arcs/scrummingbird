@@ -16,7 +16,7 @@
            (click)="showDetails(issue)">
         {{issue.title}}
         <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
-        <span *ngIf="issue.assignee" [tooltip]="issue.assignee" class="fa fa-user"></span>
+        <img *ngIf="issue.assigneeUrl"  [tooltip]="issue.assignee"  [src]="issue.assigneeUrl" style="max-height: 36px">
 
         <div class="form-group pull-right">
           <input [(ngModel)]="selected[issue.number]"
@@ -45,7 +45,8 @@
       <div class="list-group-item issue issue-new" *ngFor="let issue of milestonesIssue[mile.number]"
            (click)="showDetails(issue)">
         {{issue.title}}
-        <span *ngIf="issue.assignee" [tooltip]="issue.assignee" class="fa fa-user"></span>
+
+       <img *ngIf="issue.assigneeUrl"  [tooltip]="issue.assignee"  [src]="issue.assigneeUrl" style="max-height: 36px">
         <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
 
         <div class="form-group pull-right">

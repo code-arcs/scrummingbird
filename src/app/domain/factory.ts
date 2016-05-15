@@ -41,10 +41,10 @@ export default class Factory {
 
   private transformUser(data:any = {github: {}}) {
     const user = new User();
-    console.log("USERSS", data);
     if (!data.github) {
       user.id = data.id || '';
       user.name = data.login || '';
+      user.picUrl = data.avatar_url;
     } else {
       user.id = data.github.id || '';
       user.email = data.github.email || '';
@@ -54,8 +54,6 @@ export default class Factory {
       user.accessToken = data.github.accessToken || '';
 
     }
-
-
     return user;
   }
 
@@ -108,6 +106,7 @@ export default class Factory {
   }
 
   private transformIssue(data:any) {
+    console.log(data.assignee ? data.assignee.avatar_url : '');
     const issue = new Issue();
     issue.id = data.id || '';
     issue.number = data.number || '';
@@ -115,6 +114,7 @@ export default class Factory {
     issue.title = data.title || '';
     issue.body = data.body || '';
     issue.assignee = data.assignee ? data.assignee.login : '';
+    issue.assigneeUrl = data.assignee ? data.assignee.avatar_url : '';
 
     issue.labels = data.labels ? this.translate('label', data.labels) : [];
     issue.milestone = data.milestone ? this.translate('milestone', data.milestone) : null;

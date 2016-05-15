@@ -6,6 +6,7 @@ export default class User {
   public email;
   public profileImage;
   public accessToken;
+  public picUrl
 
   constructor() {}
 }

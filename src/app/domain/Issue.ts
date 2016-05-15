@@ -9,6 +9,7 @@ export default class Issue {
   public repository;
   public commentCount;
   public assignee;
+  public assigneeUrl;
 
   constructor() {}
 
