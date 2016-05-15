@@ -8,6 +8,7 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import {MilestoneService} from "../../domain/milestone.service";
 import {IssueService} from "../../domain/issue.service";
 import {RepositoryService} from "../../domain/repository.service";
+import {LabelColor} from "../../domain/label";
 
 @Component({
   moduleId: module.id,
@@ -48,17 +49,28 @@ export class MilestoneListComponent implements OnInit {
             this.milestones = milestones;
 
             this.milestones.forEach(mile => {
-              this.milestonesIssue[mile.number] = this.getIssuesForMilestone(mile);
+              const issues = this.getIssuesForMilestone(mile);
+              let sum = 0;
+
+              issues.forEach((issue) => {
+                (issue.labels || []).forEach((label) => {
+                  if (label.color.toLowerCase() == LabelColor.toLowerCase()) {
+                    sum += parseInt(label.name.replace('d', ''));
+                  }
+                })
+              });
+              mile.timeCount = sum;
+              this.milestonesIssue[mile.number] = issues;
             });
 
             this.backlogIssues = this.issues.filter(i => !i.milestone);
           });
 
 
-          this.rs.getCollaborators(this.ownerName, this.repoName)
-            .subscribe(user => {
-              this.users = user;
-            })
+        this.rs.getCollaborators(this.ownerName, this.repoName)
+          .subscribe(user => {
+            this.users = user;
+          })
       });
   }
 
@@ -80,8 +92,9 @@ export class MilestoneListComponent implements OnInit {
         this.ngOnInit();
       });
   }
+
   public typeaheadOnSelectUser(e:any, number:number):void {
-    this.is.update(this.ownerName, this.repoName, number, {assignee	: e.item.name})
+    this.is.update(this.ownerName, this.repoName, number, {assignee: e.item.name})
       .subscribe(() => {
         this.ngOnInit();
       });
