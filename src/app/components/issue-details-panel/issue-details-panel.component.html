@@ -5,7 +5,7 @@
     </h3>
   </div>
   <div class="panel-body">
-    <div *ngIf="authedUser.username === issue.assignee && issue.state === 'open'">
+    <div>
       <div class="btn-group btn-group-xs" role="toolbar">
         <a class="btn btn-default" (click)="setGuess(issue, guess)" *ngFor="let guess of guesses">{{guess.name}}</a>
       </div>
