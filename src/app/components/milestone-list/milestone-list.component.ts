@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {HTTP_PROVIDERS} from '@angular/http';
 
@@ -6,25 +6,29 @@ import {TOOLTIP_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {IssueService} from '../../domain/issue.service';
 import {AuthenticationService} from '../../shared/authentication.service';
+import {MilestoneService} from "../../domain/milestone.service";
 
 @Component({
   moduleId: module.id,
   selector: 'app-milestone-list',
   templateUrl: 'milestone-list.component.html',
   styleUrls: ['milestone-list.component.css'],
-  providers: [IssueService, AuthenticationService, HTTP_PROVIDERS],
+  providers: [IssueService, AuthenticationService, MilestoneService, HTTP_PROVIDERS],
   directives: [ROUTER_DIRECTIVES, TOOLTIP_DIRECTIVES]
 })
 
 export class MilestoneListComponent implements OnInit {
   @Input() repoName:string;
   @Input() ownerName:string;
+  @Output() selectedItem = new EventEmitter<any>();
+
   issues:any;
   milestones:any;
   backlogIssues:any;
-  milestonesIssue:any= {};
+  milestonesIssue:any = {};
+  detailItem:any;
 
-  constructor(private is:IssueService) {
+  constructor(private is:IssueService, private ms:MilestoneService) {
   }
 
   ngOnInit() {
@@ -37,12 +41,16 @@ export class MilestoneListComponent implements OnInit {
               .indexOf(value.number) === index : false
           });
 
-        this.milestones.forEach(mile => {
-          console.log(mile);
-          this.milestonesIssue[mile.number] = this.getIssuesForMilestone(mile);
-        });
+        this.ms.get(this.ownerName, this.repoName)
+          .subscribe(milestones => {
+            this.milestones = milestones;
 
-        this.backlogIssues = this.issues.filter(i => !i.milestone);
+            this.milestones.forEach(mile => {
+              this.milestonesIssue[mile.number] = this.getIssuesForMilestone(mile);
+            });
+
+            this.backlogIssues = this.issues.filter(i => !i.milestone);
+          });
       });
   }
 
@@ -50,5 +58,7 @@ export class MilestoneListComponent implements OnInit {
     return this.issues.filter(i => i.milestone && i.milestone.number === milestone.number);
   }
 
-
+  showDetails(item) {
+    this.selectedItem.emit(item);
+  }
 }

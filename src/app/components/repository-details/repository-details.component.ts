@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
-import { OnActivate, RouteSegment, RouteTree, Routes } from '@angular/router';
-import { HTTP_PROVIDERS } from '@angular/http';
+import {Component} from '@angular/core';
+import {OnActivate, RouteSegment, RouteTree, Routes} from '@angular/router';
+import {HTTP_PROVIDERS} from '@angular/http';
 
 import {TAB_DIRECTIVES} from 'ng2-bootstrap'
 
-import { RepositoryService } from './../../domain/repository.service';
-import { AuthenticationService } from './../../shared/authentication.service';
+import {RepositoryService} from './../../domain/repository.service';
+import {AuthenticationService} from './../../shared/authentication.service';
 import Repository from './../../domain/repository';
+import Milestone from './../../domain/milestone';
+import Issue from './../../domain/issue';
 import {MilestoneListComponent} from "../milestone-list/milestone-list.component";
 import {IssueListComponent} from "../issue-list/issue-list.component";
-import {DisclaimerComponent} from "../disclaimer/disclaimer.component";
+import {MilestoneDetailsPanelComponent} from "../milestone-details-panel/milestone-details-panel.component";
+import {IssueDetailsPanelComponent} from "../issue-details-panel/issue-details-panel.component";
 
 @Component({
   moduleId: module.id,
@@ -17,25 +20,37 @@ import {DisclaimerComponent} from "../disclaimer/disclaimer.component";
   templateUrl: 'repository-details.component.html',
   styleUrls: ['repository-details.component.css'],
   providers: [RepositoryService, HTTP_PROVIDERS, AuthenticationService],
-  directives: [MilestoneListComponent, IssueListComponent,TAB_DIRECTIVES]
+  directives: [MilestoneDetailsPanelComponent, IssueDetailsPanelComponent, MilestoneListComponent, IssueListComponent, TAB_DIRECTIVES]
 })
 export class RepositoryDetailsComponent implements OnActivate {
   routeSegment:RouteSegment;
   repository:Repository = new Repository();
   repoName:string;
   ownerName:string;
+  selectedIssue:Issue;
+  selectedMilestone:Milestone;
+
   routerOnActivate(curr:RouteSegment, prev?:RouteSegment, currTree?:RouteTree, prevTree?:RouteTree):void {
     this.routeSegment = curr;
   }
 
-  constructor(private repositoryService:RepositoryService) {}
+  constructor(private repositoryService:RepositoryService) {
+  }
 
   ngOnInit() {
     this.repoName = this.routeSegment.getParam('repoName');
     this.ownerName = this.routeSegment.getParam('ownerName');
 
-    this.repositoryService.getRepository(this.ownerName,this.repoName)
-        .subscribe((repo) => this.repository = repo);
+    this.repositoryService.getRepository(this.ownerName, this.repoName)
+      .subscribe((repo) => this.repository = repo);
   }
 
+  itemSelected(selectedItem) {
+    this.selectedIssue = this.selectedMilestone = null;
+    if(selectedItem instanceof Milestone) {
+      this.selectedMilestone = selectedItem;
+    } else if(selectedItem instanceof Issue) {
+      this.selectedIssue = selectedItem;
+    }
+  }
 }

@@ -5,23 +5,11 @@
 
 <div class="row">
   <div class="col-md-8">
-    <app-milestone-list ownerName="{{ownerName}}" repoName="{{repoName}}"></app-milestone-list>
+    <app-milestone-list ownerName="{{ownerName}}" repoName="{{repoName}}" (selectedItem)="itemSelected($event)"></app-milestone-list>
   </div>
   <div class="col-md-4">
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          Details of Issue / Milestone
-        </h3>
-      </div>
-      <div class="panel-body">
-        The issue's description, status, assignee, labels, ....
-      </div>
-    </div>
-
-    <app-issue-list ownerName="{{ownerName}}" repoName="{{repoName}}" ></app-issue-list>
-
+    <app-issue-details-panel [issue]="selectedIssue"></app-issue-details-panel>
+    <app-milestone-details-panel [milestone]="selectedMilestone"></app-milestone-details-panel>
   </div>
 
 </div>
