@@ -51,6 +51,7 @@ const barrels: string[] = [
   'app/components/disclaimer',
   'app/pipes/orderBy',
   'app/pipes/filterBy',
+  'app/pipes/filterByAttribute',
   'app/components/home',
   'app/components/repository-details',
   'app/components/milestone-list',

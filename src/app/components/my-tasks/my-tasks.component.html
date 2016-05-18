@@ -1,29 +1,83 @@
 <div class="row">
-  <div class="col-md-6">
-
+  <div class="col-md-12">
     <div class="panel panel-default panel-sprint">
       <div class="panel-heading">
         <h3 class="panel-title">
-          My Tasks
-
-          <input [value]="filterValue" class="pull-right input-xs" (keyup)="onKey($event)" placeholder="Search"/>
-        </h3>
+      My Tasks
+      <input [value]="filterValue" class="pull-right input-xs" (keyup)="onKey($event)" placeholder="Search"/>
+    </h3>
       </div>
-      <div class="panel-body">
-        <div class="list-group list-issues">
-          <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues | filterBy: [filterValue] | async"
-               (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
 
-            <h4 class="list-group-item-heading">{{issue.title}}</h4>
-            <div class="list-group-item-text">
-              {{issue.repository.name}}
+      <div class="panel-body">
+        <div class="col-md-6">
+          <div class="panel panel-default panel-sprint">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+          ToDo
+        </h4>
+            </div>
+            <div class="panel-body">
+              <div class="list-group list-issues">
+                <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues
+                  | filterBy: [filterValue] | filterByAttribute: [todo] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+                  <h4 class="list-group-item-heading">{{issue.title}}</h4>
+                  <div class="list-group-item-text">
+                    {{issue.repository.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="panel panel-default panel-sprint">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+          Work in Progress
+        </h4>
+            </div>
+            <div class="panel-body">
+              <div class="list-group list-issues">
+                <div class="list-group-item issue issue-assigned" *ngFor="let issue of myIssues |
+                  filterBy: [filterValue] | filterByAttribute: [wip] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+                  <h4 class="list-group-item-heading">{{issue.title}}</h4>
+                  <div class="list-group-item-text">
+                    {{issue.repository.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3" >
+          <div class="panel panel-default panel-sprint">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+          Done
+        </h4>
+            </div>
+            <div class="panel-body">
+              <div class="list-group list-issues">
+                <div class="list-group-item issue issue-done" *ngFor="let issue of myIssues |
+                  filterBy: [filterValue] |  filterByAttribute: [closed] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+                  <h4 class="list-group-item-heading">{{issue.title}}</h4>
+                  <div class="list-group-item-text">
+                    {{issue.repository.name}}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+</div>
+
+<div class="row">
+  <div class="col-md-12">
     <div class="panel panel-default panel-sprint" *ngIf="selectedIssue">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -38,9 +92,7 @@
         <div class="well">
           {{selectedIssue.body}}
         </div>
-
-        <app-comments [issue]="selectedIssue" ></app-comments>
-
+        <app-comments [issue]="selectedIssue"></app-comments>
       </div>
     </div>
   </div>

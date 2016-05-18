@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../shared/authentication.service';
 import { IssueService } from '../../domain/issue.service';
 import Issue from '../../domain/issue';
 import {FilterByPipe} from '../../pipes/filterBy';
+import {FilterByAttributePipe} from '../../pipes/filterByAttribute';
 
 import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
 import {CommentsComponent} from "../comments/comments.component";
@@ -14,16 +15,22 @@ import {CommentsComponent} from "../comments/comments.component";
   templateUrl: 'my-tasks.component.html',
   styleUrls: ['my-tasks.component.css'],
   providers: [IssueService, HTTP_PROVIDERS, AuthenticationService],
-  pipes: [FilterByPipe],
+  pipes: [FilterByPipe, FilterByAttributePipe],
   directives: [ACCORDION_DIRECTIVES, CommentsComponent]
 })
 export class MyTasksComponent implements OnInit {
   myIssues: any;
   selectedIssue: Issue;
   filterValue:string;
+  todo: any;
+  closed: any;
+  wip: any;
 
   constructor(private issueService: IssueService) {
     this.filterValue = '';
+    this.todo = {key: "state", value: "open"};
+    this.closed = {key: "state", value: "closed"};
+    this.wip = {key: "label", value: "inProgress"};
   }
 
   ngOnInit() {
@@ -57,7 +64,4 @@ export class MyTasksComponent implements OnInit {
   selectIssue(issue: Issue) {
     this.selectedIssue = issue;
   }
-
-
-
 }

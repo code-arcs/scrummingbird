@@ -15,7 +15,7 @@ export class IssueService {
   }
 
   public getIssues() {
-    const url = `${this.apiUrl}/issues`;
+    const url = `${this.apiUrl}/issues?state=all`;
     return this.http.get(url, {
       headers: this.authenticationService.getAuthedHeader()
     })
