@@ -12,9 +12,8 @@
       Add the power of Scrum to your GitHub projects!<br>
       It has never been easier :)
     </p>
-    <a [routerLink]="['/repositories']" href="#" class="btn-start btn-bordered">
-      Scrum on!
-    </a>
+    <a *ngIf="user" [routerLink]="['/repositories']" href="#" class="btn-start btn-bordered">Scrum on!</a>
+    <a *ngIf="!user" (click)="login()" href="#" class="btn-start btn-bordered">Please login first...</a>
   </div>
 
   <nav>
