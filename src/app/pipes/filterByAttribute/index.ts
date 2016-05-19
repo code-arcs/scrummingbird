@@ -10,9 +10,6 @@ export class FilterByAttributePipe implements PipeTransform {
 
   filter(array, args) {
       let [input] = args;
-      return (array || []).filter(i => {
-        console.log(i.labels, input)
-        return i[input.key] === input.value;
-      });
+      return (array || []).filter(i => i[input.key] === input.value);
     }
   }

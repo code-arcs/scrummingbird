@@ -3,9 +3,9 @@
     <div class="panel panel-default panel-sprint">
       <div class="panel-heading">
         <h3 class="panel-title">
-      My Tasks
-      <input [value]="filterValue" class="pull-right input-xs" (keyup)="onKey($event)" placeholder="Search"/>
-    </h3>
+          Kanban Board
+          <input [value]="filterValue" class="pull-right input-xs" (keyup)="onKey($event)" placeholder="Search"/>
+        </h3>
       </div>
 
       <div class="panel-body">
@@ -13,87 +13,58 @@
           <div class="panel panel-default panel-sprint">
             <div class="panel-heading">
               <h4 class="panel-title">
-          ToDo
-        </h4>
+                Work in Progress
+              </h4>
             </div>
             <div class="panel-body">
               <div class="list-group list-issues">
-                <div class="list-group-item issue issue-new" *ngFor="let issue of myIssues
-                  | filterBy: [filterValue] | filterByAttribute: [todo] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+                <accordion class="list-group-item issue issue-new" *ngFor="let issue of myIssues
+                  | filterBy: [filterValue] | filterByAttribute: [todo] | async" (click)="selectIssue(issue)"
+                           [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
                   <h4 class="list-group-item-heading">{{issue.title}}</h4>
-                  <div class="list-group-item-text">
-                    {{issue.repository.name}}
-                  </div>
-                </div>
+                  <accordion-group heading=" {{issue.repository.name}}" [isOpen]="false">
+                    <div class="well">
+                      {{issue.body}}
+                    </div>
+                    <app-comments [issue]="issue"></app-comments>
+                    <div class="btn-group" role="group" aria-label="...">
+                      <button type="button" class="btn btn-xs btn-success" (click)="start(selectedIssue)">start</button>
+                      <button type="button" class="btn btn-xs btn-info" (click)="unassign(selectedIssue)">unassign
+                      </button>
+                      <button type="button" class="btn btn-xs btn-danger" (click)="close(selectedIssue)">close</button>
+                    </div>
+                  </accordion-group>
+                </accordion>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-6">
           <div class="panel panel-default panel-sprint">
             <div class="panel-heading">
               <h4 class="panel-title">
-          Work in Progress
-        </h4>
+                Done
+              </h4>
             </div>
+
             <div class="panel-body">
               <div class="list-group list-issues">
-                <div class="list-group-item issue issue-assigned" *ngFor="let issue of myIssues |
-                  filterBy: [filterValue] | filterByAttribute: [wip] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
+                <accordion class="list-group-item issue issue-done" *ngFor="let issue of myIssues |
+                  filterBy: [filterValue] |  filterByAttribute: [closed] | async">
                   <h4 class="list-group-item-heading">{{issue.title}}</h4>
-                  <div class="list-group-item-text">
-                    {{issue.repository.name}}
-                  </div>
-                </div>
+                  <accordion-group heading=" {{issue.repository.name}}" [isOpen]="false">
+                    <div class="well">
+                      {{issue.body}}
+                    </div>
+                    <app-comments [issue]="issue"></app-comments>
+                  </accordion-group>
+                </accordion>
+
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-3" >
-          <div class="panel panel-default panel-sprint">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-          Done
-        </h4>
-            </div>
-            <div class="panel-body">
-              <div class="list-group list-issues">
-                <div class="list-group-item issue issue-done" *ngFor="let issue of myIssues |
-                  filterBy: [filterValue] |  filterByAttribute: [closed] | async" (click)="selectIssue(issue)" [ngClass]="{'active': selectedIssue && (issue.id == selectedIssue.id)}">
-                  <h4 class="list-group-item-heading">{{issue.title}}</h4>
-                  <div class="list-group-item-text">
-                    {{issue.repository.name}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default panel-sprint" *ngIf="selectedIssue">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          {{selectedIssue.title}}
-          <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-xs btn-primary" (click)="close(selectedIssue)">close</button>
-            <button type="button" class="btn btn-xs btn-default" (click)="unassign(selectedIssue)">unassign</button>
-          </div>
-        </h3>
-      </div>
-      <div class="panel-body">
-        <div class="well">
-          {{selectedIssue.body}}
-        </div>
-        <app-comments [issue]="selectedIssue"></app-comments>
-      </div>
-    </div>
-  </div>
-</div>
