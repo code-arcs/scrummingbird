@@ -12,25 +12,23 @@
   <div class="col-md-7">
     <app-milestone-list ownerName="{{ownerName}}" repoName="{{repoName}}" (selectedItem)="itemSelected($event)"></app-milestone-list>
   </div>
-  <div class="col-md-5" style="position: relative">
-    <div style="position: fixed;" class="col-md-4">
-      <app-issue-details-panel [ownerName]="ownerName" [repoName]="repoName" [issue]="selectedIssue" *ngIf="selectedIssue"></app-issue-details-panel>
-      <app-milestone-details-panel [milestone]="selectedMilestone" *ngIf="selectedMilestone"></app-milestone-details-panel>
+  <div class="col-md-5">
+    <app-issue-details-panel [ownerName]="ownerName" [repoName]="repoName" [issue]="selectedIssue" *ngIf="selectedIssue"></app-issue-details-panel>
+    <app-milestone-details-panel [milestone]="selectedMilestone" *ngIf="selectedMilestone"></app-milestone-details-panel>
 
-      <div class="panel panel-default" *ngIf="!selectedMilestone && !selectedIssue">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            What's this?
-          </h3>
-        </div>
-        <div class="panel-body">
-          In this view you can create Sprints and assign issues to your defined sprints.
-          This will help you to structure your working process.
-          All new issues will appear in the "Backlog" section of this page.
-          When you click on an issue, you can add a label which represents the guessed amount of time you think the issue
-          will take to solve.
-          You can assign issues to milestones as well by using the input "typeahead".
-        </div>
+    <div class="panel panel-default" *ngIf="!selectedMilestone && !selectedIssue">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          What's this?
+        </h3>
+      </div>
+      <div class="panel-body">
+        In this view you can create Sprints and assign issues to your defined sprints.
+        This will help you to structure your working process.
+        All new issues will appear in the "Backlog" section of this page.
+        When you click on an issue, you can add a label which represents the guessed amount of time you think the issue
+        will take to solve.
+        You can assign issues to milestones as well by using the input "typeahead".
       </div>
     </div>
   </div>

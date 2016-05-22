@@ -13,27 +13,30 @@
 
     <div class="list-group list-issues">
       <div class="list-group-item issue" [ngClass]="{'issue-new': issue.state === 'open', 'issue-assigned': issue.assignee !== '', 'issue-done': issue.state === 'done'}" aria-hidden="true" *ngFor="let issue of backlogIssues" (click)="showDetails(issue)">
-        {{issue.title}}
-        <span class="pull-right">
-          <div class="row">
-            <div class="col-md-4">
-              <span class="label label-info" *ngFor="let label of issue.labels">{{label.name}}</span>
-              <img *ngIf="issue.assigneeUrl" [tooltip]="issue.assignee"  [src]="issue.assigneeUrl" style="max-height: 36px">
-              &nbsp;
-            </div>
-            <div class="col-md-8">
-              <div class="form-group">
-                <input [(ngModel)]="selected[issue.number]"
-                       [typeahead]="milestones"
-                       (typeaheadOnSelect)="typeaheadOnSelect($event, issue.number)"
-                       [typeaheadOptionField]="'title'"
-                       placeholder="Assign to milestone..."
-                       class="form-control input-sm">
+        <div class="row">
+          <div class="col-xs-8">
+            {{issue.title}}<br>
+            <span class="label label-info" [style.background]="label.color"  *ngFor="let label of issue.labels">{{label.name}}</span>
+          </div>
+          <div class="col-xs-4">
+            <div class="row">
+              <div class="col-xs-3">
+                <img *ngIf="issue.assigneeUrl" [tooltip]="issue.assignee"  [src]="issue.assigneeUrl" style="max-height: 36px">
+                &nbsp;
+              </div>
+              <div class="col-xs-9">
+                <div class="form-group">
+                  <input [(ngModel)]="selected[issue.number]"
+                         [typeahead]="milestones"
+                         (typeaheadOnSelect)="typeaheadOnSelect($event, issue.number)"
+                         [typeaheadOptionField]="'title'"
+                         placeholder="Assign to milestone..."
+                         class="form-control input-sm">
+                </div>
               </div>
             </div>
           </div>
-
-        </span>
+        </div>
       </div>
     </div>
 
