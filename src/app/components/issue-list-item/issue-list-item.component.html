@@ -1,0 +1,15 @@
+<div class="list-group-item issue"
+     [ngClass]="{'issue-new': issue.state === 'open', 'issue-assigned': issue.assignee !== '', 'issue-done': issue.state === 'closed'}"
+     (click)="selectIssue(issue)">
+  <h4>{{issue.title}}</h4>
+  <span class="badge-comments pull-right">
+    <i class="fa fa-2x fa-comment-o"></i>
+    <div class="counter">{{issue.commentCount}}</div>
+  </span>
+  <p>
+    {{issue.body}}
+  </p>
+  <div class="labels">
+    <span class="label label-info" [style.background]="label.color"  *ngFor="let label of issue.labels">{{label.name}}</span>
+  </div>
+</div>
