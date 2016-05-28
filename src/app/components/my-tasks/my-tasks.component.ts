@@ -5,9 +5,11 @@ import { IssueService } from '../../domain/issue.service';
 import Issue from '../../domain/issue';
 import {FilterByPipe} from '../../pipes/filterBy';
 import {FilterByAttributePipe} from '../../pipes/filterByAttribute';
+import {IssueListItemComponent} from '../issue-list-item';
 
 import { ACCORDION_DIRECTIVES } from 'ng2-bootstrap';
 import {CommentsComponent} from "../comments/comments.component";
+import {IssueDetailsPanelComponent} from "../issue-details-panel";
 
 @Component({
   moduleId: module.id,
@@ -16,7 +18,7 @@ import {CommentsComponent} from "../comments/comments.component";
   styleUrls: ['my-tasks.component.css'],
   providers: [IssueService, HTTP_PROVIDERS, AuthenticationService],
   pipes: [FilterByPipe, FilterByAttributePipe],
-  directives: [ACCORDION_DIRECTIVES, CommentsComponent]
+  directives: [ACCORDION_DIRECTIVES, CommentsComponent, IssueListItemComponent, IssueDetailsPanelComponent]
 })
 export class MyTasksComponent implements OnInit {
   myIssues: any;
@@ -35,6 +37,10 @@ export class MyTasksComponent implements OnInit {
 
   ngOnInit() {
     this.load();
+  }
+
+  issueSelected($event) {
+    this.selectedIssue = $event;
   }
 
   load() {
