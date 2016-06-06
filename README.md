@@ -1,48 +1,28 @@
-# This is your [AngularAttack](https://www.angularattack.com) 2016 Repo
-
-This repo is the start of your AngularAttack 2016 entry. It contains the simple [Angular2 starter](https://angular.io/docs/ts/latest/quickstart.html) files.
-
-**DO NOT MAKE ANY CODE CHECKINS TO THIS REPOSITORY BEFORE THE COMPETITION OFFICIALLY BEGINS.**
-
-**DOING SO COULD DISQUALIFY YOU.**
-
-
-However, before the competition starts, there are some things we encourage you to do to get prepared for the competition.
-
-
-### Step 1) Get Your Local Environment setup
-
-Clone this repo locally, and make sure all your team members have access to it.
-
+# Scrummingbird
+Add the power of Scrum to your GitHub projects!
+It has never been easier :)
+### Demo
+[Scrummingbord](http://scrummingbird.codearcs.de)
+[Screencast](https://youtu.be/ZTxw6B3GhrE)
+### Getting Started
 * Install the latest [Node / NPM](https://nodejs.org).
-
 * `git clone git@github.com:rumblex/angularattack2016-scrummingbird.git`
-
 * `cd angularattack2016-scrummingbird`
-
 * `npm install`
-
 * `npm start` will start the server locally to test that everything is running correctly
 
+Alternatively use `angular-cli serve`
 
-### Step 2) Deploy Your App
+### Documentation
+You like to organize your issues using GitHub but would like to easily stick to a Scrum based method? We will support you by enhancing GitHub "through" adding advanced features which implement a Scrum oriented view your GitHub issues!
+With using Scrummingbird you can easily define your sprints and make use of a backlog where you can organize issues of you and of users of your library or project as well!
 
-While you can't make any checkins before the comp, what you **can** do right now is deploy this sample app to [Surge](https://surge.sh) (our competition hosting provider).
+- Use Chrome
+- Login with Github
+Click on "Repositories" in the Header:
+You will see all repositories you have access to. Select the repository you want to scrumify! We will enhance GitHub's native issue tracking system by adding the ability to structure your issues in sprints.
 
-* `npm install -g surge`
+After you choose one Repository, you can create Sprints and assign issues to your defined sprints. This will help you to structure your working process. All new issues will appear in the "Backlog" section of this page. When you click on an issue, you can add a label which represents the guessed amount of time you think the issue will take to solve. You can assign issues to milestones as well by using the input "typeahead".
+Issues could be easy assigned to a collaborator.
 
-* `surge .`
-
-Note: please do not remove the `CNAME` file, as that tells it where to deploy to.
-
-If receive the error message `"You do not have permission to publish to scrummingbird.2016.angularattack.io"`, it might mean another team member has already deployed your project to Surge. Ask them to run the next step to give you access.
-
-### Step 3) Add Your Team Members to Surge
-
-* `surge . --add michael0.hoppe@googlemail.com,github@stekoe.de,Lukas.Graessle@web.de`
-
-
-### Step 4) Wait til competition starts
-
-It begins at exactly [May 14 at 00:00 UTC](https://www.wolframalpha.com/input/?i=May+14,+2016+0:00+UTC). Once the competition starts,   you can write over this project.
-
+Each user has a My Task section: here he gets an simple overview with all Issues that are related to him
