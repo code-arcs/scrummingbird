@@ -4,6 +4,7 @@ It has never been easier :)
 ### Demo
 * [Scrummingbird](http://scrummingbird.codearcs.de)
 * [Screencast](https://youtu.be/ZTxw6B3GhrE)
+
 ### Getting Started
 * Install the latest [Node / NPM](https://nodejs.org).
 * `git clone git@github.com:rumblex/angularattack2016-scrummingbird.git`
