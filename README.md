@@ -2,8 +2,8 @@
 Add the power of Scrum to your GitHub projects!
 It has never been easier :)
 ### Demo
-[Scrummingbord](http://scrummingbird.codearcs.de)
-[Screencast](https://youtu.be/ZTxw6B3GhrE)
+* [Scrummingbird](http://scrummingbird.codearcs.de)
+* [Screencast](https://youtu.be/ZTxw6B3GhrE)
 ### Getting Started
 * Install the latest [Node / NPM](https://nodejs.org).
 * `git clone git@github.com:rumblex/angularattack2016-scrummingbird.git`
